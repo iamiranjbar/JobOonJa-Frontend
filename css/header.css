@@ -1,9 +1,10 @@
-@import "font.css";
+@import "./font.css";
 
 .header_text{
     font-family: IRANSans;
     color: #000;
     font-size: small;
+    margin-top: 10px;
 }
 
 .logo{
