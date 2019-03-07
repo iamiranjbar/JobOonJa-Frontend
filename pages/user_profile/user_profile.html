@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../components/header.css">
+    <link rel="stylesheet" href="../../components/footer.css">
     <title>User</title>
 </head>
 <body>
     <!--Header-->
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="header_text"><a class="header_text" href="#">خروج</a></li>
-                <li class="header_text"><a class="header_text" href="#">حساب کاربری</a></li>
+                <li><a class="header_text" href="#">خروج</a></li>
+                <li><a class="header_text" href="#">حساب کاربری</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#"><img class="logo" src="../assets/logo/logo%20v1.png"></a></li>
+                <li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>
             </ul>
         </div>
     </nav>
@@ -82,7 +90,7 @@
         ((out[63] < 0) ? half_zero : (out[63] > 255) ? half_one : out[63][7:0])})
     </div>
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 footer_text">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©
+    <div class="footer-copyright text-center py-3 footer_text bg-dark footer_bar">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©
     </div>
     <!-- Copyright -->
 

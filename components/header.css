@@ -4,9 +4,13 @@
     font-family: IRANSans;
     color: #000;
     font-size: small;
-    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .logo{
+    height: 60px;
+}
+
+.header_bar{
     height: 60px;
 }
