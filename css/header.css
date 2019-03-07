@@ -1,0 +1,10 @@
+@import "../assets/fonts/iransans-fonts/fonts.scss";
+
+.header_text{
+    font-family: IRANSans;
+    color: #000;
+}
+
+.logo{
+    height: 60px;
+}
