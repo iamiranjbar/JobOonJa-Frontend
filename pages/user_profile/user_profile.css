@@ -1,0 +1,46 @@
+@import "../../components/font.css";
+
+.blue_bar{
+    background-color: #0affd3;
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.user_image_profile{
+    width: 125px;
+    height: 125px;
+    float: right;
+    margin-top: 15%;
+    margin-right: 10%;
+    border-color: white;
+    border-radius: 6px;
+}
+
+.information{
+    margin-top: 32%;
+    margin-right: 10%;
+    margin-bottom: 65px;
+}
+
+.name_text{
+    margin-top: 22%;
+    margin-right: 5%;
+    float: right;
+    font-family: IRANSans;
+    list-style-type: none;
+    direction: rtl;
+}
+
+.full_name{
+    font-size: xx-large;
+    direction: rtl;
+}
+
+.nickname{
+    font-size: large;
+    direction: rtl;
+}
+
