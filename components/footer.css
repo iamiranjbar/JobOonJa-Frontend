@@ -7,9 +7,11 @@
 }
 
 .footer_bar{
-    clear: both;
-    position: relative;
-    height: 65px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    margin-top: -65px;
+    height: 60px;
+    top: 100%;
+    text-align: center;
 }
