@@ -6,49 +6,28 @@ main{
 
 .blue_bar{
     background-color: rgb(185, 239, 242);
-    width: 100%;
     height: 230px;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .white_bar{
     background-color: #f9f9f9;
-    width: 100%;
-    height: 500px;
-    margin-bottom: 60px;
-    position: absolute;
-    top: 200px;
-    left: 0;
 }
 
 .user_image_profile{
-    width: 200px;
-    height: 200px;
-    float: right;
-    margin-top: 110px;
-    margin-right: 70px;
+    width: 190px;
+    height: 190px;
+    margin-top: -100px;
     border-color: white;
-    border-radius: 6px;
-    position: relative;
-}
-
-.information{
-    margin-top: 40%;
-    margin-right: 10%;
-    margin-bottom: 65px;
+    border-radius: 12px;
+    border: 8px solid white;
 }
 
 .name_text{
-    margin-top: 200px;
-    margin-right: 10px;
-    float: right;
+    margin-top: 20px;
     font-family: IRANSans;
     list-style-type: none;
     direction:rtl;
     text-align: right;
-    position: relative;
 }
 
 .full_name{
@@ -62,11 +41,22 @@ main{
 .description{
     font-family: IRANSans;
     list-style-type: none;
-    margin-top: 130px;
-    margin-right: 100px;
 }
 
 .description_text{
     direction:rtl;
     text-align: right;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.description_skills{
+    margin-top: 40px;
+    font-family: IRANSans;
+    font-size: xx-small;
+}
+
+.selection{
+    float: right;
+    margin-top: 20px;
 }
