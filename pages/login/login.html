@@ -20,60 +20,111 @@
     <title>Login</title>
 </head>
 <body>
-<!--<header>-->
-    <!--<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar">-->
-        <!--<div class="container-fluid">-->
-            <!--<ul class="nav navbar-nav">-->
-                    <!--<li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</nav>-->
-<!--</header>-->
-<main>
-    <div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <form class="form-horizontal" style="width:50%;">
-                    <fieldset>
-                        <!-- Form Name -->
-                        <legend>SignUp</legend> <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-6 control-label" for="textinput">FirstName</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-md" id="FirstName" name="firstinput" placeholder="FirstName" type="text" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6 control-label" for="textinput">FirstName</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-md" id="LastNmae" name="lastnametinput" placeholder="LastName" type="text" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6 control-label" for="textinput">Username</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-md" id="textinput" name="textinput" placeholder="Username" type="text">
-                            </div>
-                        </div><!-- Password input-->
-                        <div class="form-group">
-                            <label class="col-md-6 control-label" for="passwordinput">Password</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-md" id="passwordinput" name="passwordinput" placeholder="Password" type="password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-6 control-label" for="passwordinput">Repeat</label>
-                            <div class="col-md-6">
-                                <input class="form-control input-md" id="Repeatinput" name="Repeatinput" placeholder="Repeat" type="password">
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <div class="carousel-item"><img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>
-            <div class="carousel-item"><img alt="Third slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a class="header_text" href="#">خانه</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>
+            </ul>
         </div>
+    </nav>
+</header>
+<main>
+    <!--<div class="container-fuid">-->
+        <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-6 top_margin">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="carousel-inner" role="listbox">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="carousel-item active">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG">&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="carousel-item"><img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="carousel-item"><img alt="Third slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">-->
+                <!--<div class="carousel-inner" role="listbox">-->
+                    <!--<div class="carousel-item active">-->
+                        <!--<img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG">-->
+                    <!--</div>-->
+                    <!--<div class="carousel-item"><img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>-->
+                    <!--<div class="carousel-item"><img alt="Third slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+    <!--</div>-->
+    <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="col-6">-->
+                    <!--<form class="form-horizontal">-->
+                        <!--<fieldset">-->
+                            <!--&lt;!&ndash; Form Name &ndash;&gt;-->
+                            <!--<legend>SignUp</legend> &lt;!&ndash; Text input&ndash;&gt;-->
+                            <!--<div class="form-group">-->
+                                <!--<input class="form-control input-md" id="FirstName" name="firstinput" placeholder="FirstName" type="text" required>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<input class="form-control input-md" id="LastNmae" name="lastnametinput" placeholder="LastName" type="text" required>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<input class="form-control input-md" id="textinput" name="textinput" placeholder="Username" type="text">-->
+                            <!--</div>&lt;!&ndash; Password input&ndash;&gt;-->
+                            <!--<div class="form-group">-->
+                                <!--<input class="form-control input-md" id="passwordinput" name="passwordinput" placeholder="Password" type="password">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<input class="form-control input-md" id="Repeatinput" name="Repeatinput" placeholder="Repeat" type="password">-->
+                            <!--</div>-->
+                        <!--</fieldset>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../assets/intellij-config.PNG" alt="Los Angeles">
+            </div>
+            <div class="carousel-item">
+                <img src="../../assets/intellij-config.PNG" alt="Chicago">
+            </div>
+            <div class="carousel-item">
+                <img src="../../assets/intellij-config.PNG" alt="New York">
+            </div>
+        </div>
+
+        <form class="col-sm-12" id="searchForm">
+            <div class="form-group col-sm-4 col-sm-offset-4">
+                <div class="input-group input-group-lg center-block">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                </div>
+            </div>
+        </form>
+
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
     </div>
+
 </main>
 <!-- Copyright -->
 <footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark footer_bar">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©

@@ -7,6 +7,7 @@ main{
 .blue_bar{
     background-color: rgb(185, 239, 242);
     height: 230px;
+    z-index: -2;
 }
 
 .white_bar{
@@ -20,6 +21,7 @@ main{
     border-color: white;
     border-radius: 12px;
     border: 8px solid white;
+    z-index: -1;
 }
 
 .name_text{
@@ -51,12 +53,20 @@ main{
 }
 
 .description_skills{
-    margin-top: 40px;
     font-family: IRANSans;
-    font-size: xx-small;
+    /*font-size: small;*/
 }
 
 .selection{
     float: right;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
+}
+
+.border_on_profile_pic{
+    height: 25px;
+    width: 100px;
+    margin-top: -28px;
+    background-color: rgb(185, 239, 242)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
+    /*margin-top: 100px;*/
+    transform: skew(-30deg,0deg);
 }
