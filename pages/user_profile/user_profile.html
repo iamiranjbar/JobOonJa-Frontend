@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,25 +21,29 @@
 </head>
 <body  class="white_bar">
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar shadow">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar shadow-sm">
             <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a class="header_text" href="#">خروج</a></li>
-                    <li><a class="header_text" href="#">حساب کاربری</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+            	<ul class="nav navbar-nav navbar-right">
                     <li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a class="header_text" href="#">حساب کاربری</a></li>
+                    <li><a class="header_text" href="#">خروج</a></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main class="white_bar">
-        <div class="container-fluid blue_bar">
+        <div class="container-fluid blue blue_bar">
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-8">
-                    <ul class="name_text">
+                <div class="col-3">
+                    <img class="img-thumbnail user_image_profile" src="../../assets/3.bmp">
+                    <div class="border_on_profile_pic"></div>
+                </div>
+                <div class="col-9">
+                    <ul class="name_text font">
                         <li class="full_name">
                             محمدرضاکیانی
                         </li>
@@ -48,14 +52,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-1"><div class="border_on_profile_pic"></div></div>
-                <div class="col-3">
-                    <img class="img-thumbnail user_image_profile" src="../../assets/3.bmp">
-                </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <ul class="description">
+                    <ul class="description font">
                         <li class="description_text col-md-12">
                             یادگیری این نوع تایپ به عنوان عامل تایپیست شدن شما، مستلزم گذراندن دو مرحله است که مرحله اول بسیار ساده و گذراست
                             ولی مرحله دوم نیاز به گذراندن زمان، حوصله و پیوستگی تمارین دارد. مرحله اول، «یادگیری قواعد» است پس از گذراندن این مرحله شما می‌توانید بدون نگاه کردن به صفحه‌کلید با سرعتی بیش از
@@ -63,33 +63,31 @@
                     </ul>
                 </div>
             </div>
-            <div class="row description_skills">
-                <div class="col-auto"></div>
-                <div class="col-auto"></div>
-                <div class="col-auto rounded">
-                    <div class="bg-white shadow">
-                         HTML <span class="badge badge-success ml-1">+</span>
+            <div class="row description_skills font float-left ml-4">
+                <div class="col-auto">
+                    <div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom">
+                        <span class="badge blue ml-1 my-0 font py-1 text-info">2</span> TypeScript
                     </div>
                 </div>
-                <div class="col-auto rounded">
-                    <div class="bg-white shadow">
-                        CSS <span class="badge badge-success ml-1">3</span>
+                <div class="col-auto">
+                    <div class="bg-white shadow-sm  px-1 font rounded-top rounded-bottom">
+                        <span class="badge blue ml-1 my-0 font py-1 text-info">16</span> JavaScript
                     </div>
                 </div>
-                <div class="col-auto rounded">
-                    <div class="bg-white shadow">
-                        JavaScript <span class="badge badge-info ml-1">16</span>
+                <div class="col-auto">
+                    <div class="bg-white shadow-sm  px-1 font rounded-top rounded-bottom">
+                        <span class="badge badge-success ml-1 my-0 font py-1">3</span> CSS
                     </div>
                 </div>
-                <div class="col-auto rounded">
-                    <div class="bg-white shadow">
-                        TypeScript <span class="badge badge-info ml-1">2</span>
+                <div class="col-auto">
+                    <div class="bg-white shadow-sm  px-1 font rounded-top rounded-bottom">
+                         <span class="badge badge-success ml-1 my-0 font py-1">+</span> HTML
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark footer_bar">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©
+    <footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark text-muted footer_bar fixed-bottom">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©
     </footer>
 </body>
 </html>

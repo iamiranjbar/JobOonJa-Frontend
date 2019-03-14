@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,68 +23,72 @@
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar">
         <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a class="header_text" href="#">خانه</a></li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a class="header_text" href="#">خانه</a></li>
             </ul>
         </div>
     </nav>
 </header>
 <main>
-    <!--<div class="container-fuid">-->
-        <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
-            <!--&lt;!&ndash;<div class="col-6 top_margin">&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="carousel-inner" role="listbox">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="carousel-item active">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG">&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="carousel-item"><img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="carousel-item"><img alt="Third slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">-->
-                <!--<div class="carousel-inner" role="listbox">-->
-                    <!--<div class="carousel-item active">-->
-                        <!--<img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG">-->
-                    <!--</div>-->
-                    <!--<div class="carousel-item"><img alt="Second slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>-->
-                    <!--<div class="carousel-item"><img alt="Third slide" class="d-block img-fluid" src="../../assets/intellij-config.PNG"></div>-->
-                <!--</div>-->
-            <!--</div>-->
-    <!--</div>-->
-    <!--<div class="container">-->
-            <!--<div class="row">-->
-                <!--<div class="col-6">-->
-                    <!--<form class="form-horizontal">-->
-                        <!--<fieldset">-->
-                            <!--&lt;!&ndash; Form Name &ndash;&gt;-->
-                            <!--<legend>SignUp</legend> &lt;!&ndash; Text input&ndash;&gt;-->
-                            <!--<div class="form-group">-->
-                                <!--<input class="form-control input-md" id="FirstName" name="firstinput" placeholder="FirstName" type="text" required>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<input class="form-control input-md" id="LastNmae" name="lastnametinput" placeholder="LastName" type="text" required>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<input class="form-control input-md" id="textinput" name="textinput" placeholder="Username" type="text">-->
-                            <!--</div>&lt;!&ndash; Password input&ndash;&gt;-->
-                            <!--<div class="form-group">-->
-                                <!--<input class="form-control input-md" id="passwordinput" name="passwordinput" placeholder="Password" type="password">-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<input class="form-control input-md" id="Repeatinput" name="Repeatinput" placeholder="Repeat" type="password">-->
-                            <!--</div>-->
-                        <!--</fieldset>-->
-                    <!--</form>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <div id="demo" class="carousel slide" data-ride="carousel">
+    <div class="row">
+        <div class="col-7 container">
+            <form class="form-horizontal font" id="signup">
+            <fieldset>
+            <legend class="text-center">ثبت نام</legend>
+            <div class="d-flex">
+                <div class="form-group shadow-sm">
+                    <label for="name" class="float-right"><b>نام</b></label>
+                    <input class="form-control input-md" id="FirstName" name="firstinput" placeholder="نام" type="text" required>
+                </div>
+                <div class="form-group shadow-sm">
+                    <label for="lastname" class="float-right"><b>نام خانوادگی</b></label>
+                    <input class="form-control input-md" id="LastNmae" name="lastnametinput" placeholder="نام خانوادگی" type="text" required>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="form-group shadow-sm">
+                    <label for="username" class="float-right"><b>نام کاربری</b></label>
+                    <input class="form-control input-md" id="textinput" name="textinput" placeholder="نام کاربری" type="text" required>
+                </div><!-- Password input-->
+                <div class="form-group shadow-sm">
+                    <label for="password" class="float-right"><b>رمز</b></label>
+                    <input class="form-control input-md" id="passwordinput" name="passwordinput" placeholder="رمز" type="password"  required>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="form-group shadow-sm">
+                    <label for="repeat" class="float-right"><b>تکرار رمز</b></label>
+                    <input class="form-control input-md" id="Repeatinput" name="Repeatinput" placeholder="تکرار رمز" type="password"  required>
+                </div>
+                <div class="form-group shadow-sm">
+                    <label for="title" class="float-right"><b>عنوان شغلی</b></label>
+                    <input class="form-control input-md" id="Repeatinput" name="JobTitle" placeholder="عنوان شغلی" type="text" required>
+            </div>
+            </div>
+            <div class="form-group shadow-sm">
+                <label for="link" class="float-right"><b>لینک عکس</b></label>
+                <input class="form-control input-md" id="Repeatinput" name="ProfileLink" placeholder="'لینک' عکس پروفایل" type="text" required>
+            </div>
+            <div class="form-group shadow-sm">
+                <label for="bio" class="float-right"><b>بایو</b></label>
+                <textarea class="form-control input-md" form="signup" name="Bio" placeholder="بیو"></textarea>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> مرا به خاطر بسپار
+                </label>
+            </div>
+            <div class="form-group shadow-sm">
+                <input class="form-control input-md btn btn-primary" type="submit" required>
+            </div>
+            </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="demo" class="carousel slide slideshow center-fit" data-ride="carousel">
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
@@ -96,24 +100,15 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../assets/intellij-config.PNG" alt="Los Angeles">
+                <img class="image" src="../../assets/755-11.jpg" alt="ssh1">
             </div>
             <div class="carousel-item">
-                <img src="../../assets/intellij-config.PNG" alt="Chicago">
+                <img class="image" src="../../assets/992-11.jpg" alt="ssh2">
             </div>
             <div class="carousel-item">
-                <img src="../../assets/intellij-config.PNG" alt="New York">
+                <img class="image" src="../../assets/2304-11.jpg" alt="ssh3">
             </div>
         </div>
-
-        <form class="col-sm-12" id="searchForm">
-            <div class="form-group col-sm-4 col-sm-offset-4">
-                <div class="input-group input-group-lg center-block">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                </div>
-            </div>
-        </form>
 
         <!-- Controls -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -127,7 +122,7 @@
 
 </main>
 <!-- Copyright -->
-<footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark footer_bar">تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد ©
+<footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark footer_bar fixed-bottom text-muted"> © تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد
 </footer>
 </body>
 </html>

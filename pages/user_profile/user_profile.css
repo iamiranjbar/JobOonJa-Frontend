@@ -4,10 +4,13 @@ main{
     min-height: calc(100vh - 60px - 60px);
 }
 
+.blue{
+	background-color: rgb(185, 239, 242);
+}
+
 .blue_bar{
-    background-color: rgb(185, 239, 242);
     height: 230px;
-    z-index: -2;
+    box-shadow: inset 0px -1px 5px rgba(0,0,0,0.2) ;
 }
 
 .white_bar{
@@ -21,12 +24,11 @@ main{
     border-color: white;
     border-radius: 12px;
     border: 8px solid white;
-    z-index: -1;
 }
 
 .name_text{
     margin-top: 20px;
-    font-family: IRANSans;
+    margin-right:-40px;
     list-style-type: none;
     direction:rtl;
     text-align: right;
@@ -41,32 +43,33 @@ main{
 }
 
 .description{
-    font-family: IRANSans;
     list-style-type: none;
 }
 
 .description_text{
+	margin-right: -25px;
     direction:rtl;
     text-align: right;
     text-align: justify;
     text-justify: inter-word;
 }
 
-.description_skills{
-    font-family: IRANSans;
-    /*font-size: small;*/
-}
-
 .selection{
     float: right;
-    /*margin-top: 20px;*/
 }
 
 .border_on_profile_pic{
     height: 25px;
     width: 100px;
-    margin-top: -28px;
-    background-color: rgb(185, 239, 242)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
-    /*margin-top: 100px;*/
+    margin-top: -115px;
+    margin-right: 190px;
+    border-right: 20px solid transparent;
+    background-color: #90d8d8;
     transform: skew(-30deg,0deg);
+    box-shadow: #90d8d8;
+    position: absolute;
+}
+
+.font{
+	font-family: IRANSans;
 }
