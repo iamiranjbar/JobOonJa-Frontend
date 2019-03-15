@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/pages/project_bid/project_bid.css">
+    <link rel="stylesheet" type="text/css" href="/pages/project_bid/flaticon.css"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -24,19 +25,80 @@
     <header>
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light header_bar">
             <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a class="header_text" href="#">خروج</a></li>
-                    <li><a class="header_text" href="#">حساب کاربری</a></li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a class="navbar-brand" href="#"><img class="logo" src="../../assets/logo/logo%20v1.png"></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a class="header_text" href="#">حساب کاربری</a></li>
+                    <li><a class="header_text" href="#">خروج</a></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
         <div class="container-fluid sky-blue-bar"></div>
-        <div class="container white-main-form"></div>
+        <div class="container white-main-form">
+            <div class="row">
+                <div class="col-3">
+                    <img class="img-thumbnail project-image" src="../../assets/project.png">
+                </div>
+                <div class="col-9">
+                    <ul class="list-text font">
+                        <li class="name-text">
+                            پروژه طراحی سایت جاب‌اونجا
+                        </li>
+                        <li class="time-text">
+                            <span class="flaticon-deadline"></span>
+                            <b>زمان باقی مانده: </b>
+                            ۱۷ دقیقه و ۲۵ ثانیه
+                        </li>
+                        <li class="budget-text">
+                            <span class="flaticon-money-bag"></span>
+                            بودجه: ۲۵۰۰ تومان
+                        </li>
+                        <li class="desc-title">
+                            توضیحات
+                        </li>
+                        <li class="desc-text">
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                از طراحان گرافیک است. چاپگر‌ها و متون بلکه روزنامه و مجله در ستون و سطر
+                                آنچنان که لازم است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                از طراحان گرافیک است. چاپگر‌ها و متون بلکه روزنامه و مجله در ستون و سطر
+                                آنچنان که لازم است.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row req-bar">
+                <div class="row col-12">
+                    <div class="req-head font">
+                        مهارت‌های لازم:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="font float-left ml-4">
+                        <div class="col-auto rounded">
+                            <div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom d-flex align-items-baseline">
+                                <span class="badge badge-color text-info">5</span>
+                                <div>HTML</div>
+                            </div>
+                        </div>
+                        <div class="col-auto rounded-corners">
+                            <div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom d-flex align-items-baseline">
+                                <span class="badge badge-color text-info">3</span> CSS
+                            </div>
+                        </div>
+                        <div class="col-auto rounded-corners">
+                            <div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom d-flex align-items-baseline">
+                                <span class="badge badge-color text-info">16</span> JavaScript
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 <footer class="footer-copyright position-absolute text-center py-3 footer_text bg-dark footer_bar text-muted fixed-bottom">

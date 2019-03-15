@@ -16,3 +16,76 @@
 .gray-bar {
     background-color: #f9f9f9;
 }
+
+.project-image {
+    width: 190px;
+    height: 190px;
+    margin-top: 30px;
+    border-color: white;
+    border-radius: 12px;
+    border: 8px solid white;
+}
+
+.font {
+	font-family: IRANSans;
+}
+
+.list-text {
+    margin-top: 30px;
+    margin-right:-40px;
+    list-style-type: none;
+    direction:rtl;
+    text-align: right;
+}
+
+.name-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.time-text {
+    display: inline;
+    font-size: 16px;
+    color: rgb(115, 115, 115);
+}
+
+.budget-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(22, 150, 143);
+    margin-bottom: 15px;
+}
+
+.desc-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.desc-text {
+    font-size: 14px;
+    text-indent: 1em;
+    margin-bottom: 30px;
+}
+
+.req-bar {
+    background-color: #f9f9f9;
+    border-top: 2px dashed;
+    border-color: rgb(52, 187, 199);
+    height: 140px;
+    border-bottom: 1px solid lightgray;
+}
+
+.req-head {
+    font-weight: bold;
+    font-size: 17px;
+    color: rgb(22, 150, 143);
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.badge-color {
+    background-color: rgb(195, 237, 241);
+    padding: 5px;
+}
