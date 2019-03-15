@@ -61,6 +61,12 @@
     margin-bottom: 15px;
 }
 
+.budget-alter-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(22, 150, 143);
+}
+
 .desc-title {
     font-size: 20px;
     font-weight: bold;
@@ -154,4 +160,26 @@
     font-size: 12px;
     margin-right: 15px; 
     border-radius: 4px;
+}
+
+.deadlined {
+    margin-top: 30px;
+    color: red;
+}
+
+.danger {
+    margin-top: -10px;
+}
+
+.time-reached-text {
+    display: inline;
+    font-size: 16px;
+    color: red;
+}
+
+.winner-text{
+    color: rgb(90, 157, 99);
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
 }
