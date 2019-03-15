@@ -34,3 +34,7 @@ main{
     max-height: 100vh;
     margin: auto;
 }
+
+.footer-bottom {
+    margin-top: 100vh;
+}
