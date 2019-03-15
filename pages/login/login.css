@@ -36,5 +36,9 @@ main{
 }
 
 .footer-bottom {
-    margin-top: 100vh;
+    margin-top: 100%;
+}
+
+.remember-me{
+    margin-bottom:15px;
 }

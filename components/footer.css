@@ -2,8 +2,8 @@
 
 .footer_text{
     font-family: IRANSans;
-    /*color: rgba(103, 104, 109, 0.82);*/
-    font-size: xx-small;
+    color: rgba(54, 54, 54);
+    font-size: medium;
 }
 
 .footer_bar{
