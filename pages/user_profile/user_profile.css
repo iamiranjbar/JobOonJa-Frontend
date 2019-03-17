@@ -1,7 +1,7 @@
 @import "../../components/font.css";
 
 main{
-    min-height: calc(100vh);
+    min-height: calc(100vh - 60px - 60px);
 }
 
 .blue{
@@ -63,7 +63,7 @@ main{
     height: 25px;
     width: 74px;
     margin-top: -115px;
-    margin-right: 214px;
+    margin-right: 103%;
     border-right: 20px solid transparent;
     background-color: rgb(129, 199, 204);
     transform: skew(-30deg,0deg);
@@ -75,7 +75,7 @@ main{
     height: 25px;
     width: 55px;
     margin-top: -25px;
-    margin-right: 210px;
+    margin-right: 100%;
     border-right: 20px solid transparent;
     background-color: rgb(129, 199, 204);
     position: relative;
@@ -84,4 +84,9 @@ main{
 
 .font{
 	font-family: IRANSans;
+}
+
+span:hover {
+    font-weight: bold;
+    color: red;
 }
