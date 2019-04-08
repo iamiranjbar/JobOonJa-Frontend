@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Router, Link, Route} from 'react-router-dom'
 import { createHashHistory } from 'history'
 import Login from "./login"
+import User from './user/User'
+
 class App extends Component {
     constructor(props){
         super(props); 
@@ -11,6 +13,7 @@ class App extends Component {
         return (
             <Router history = {createHashHistory()}>
                 <Route exact path="/Login" component={Login}/>
+                <Route exact path="/user" component={User}/>
                 <Route exact path="/" component={Home}/>
             </Router>
         );

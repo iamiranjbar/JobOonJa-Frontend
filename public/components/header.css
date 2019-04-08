@@ -1,0 +1,16 @@
+@import "./font.css";
+
+.header_text{
+    font-family: IRANSans;
+    color: #000;
+    font-size: small;
+    margin-left: 20px;
+}
+
+.logo{
+    height: 60px;
+}
+
+.header_bar{
+    height: 60px;
+}
