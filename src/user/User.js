@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import './user_profile.css'
 
 class User extends Component {
+	constructor(props){
+        super(props); 
+        const { match: { params } } = this.props;
+        console.log(`/user/${params.userId}`);
+        const axios = require('axios');
+		axios.get(`http://localhost:8000/user/${params.userId}`)
+    	.then(({ data: user }) => {
+      		console.log('user', user);
+
+      		this.setState({ user });
+    	});
+    }
+
   render() {
     return (
         <div class="white_bar">
@@ -25,7 +38,7 @@ class User extends Component {
                 <div class="row">
                     <div class="col-3">
                         <div>
-                            <img class="img-thumbnail user_image_profile" src="./assets/3.bmp"></img>
+                            <img class="img-thumbnail user_image_profile" src="{self.user.url}"></img>
                             <div class="border_on_profile_pic"></div>
                             <div class="border_on_profile_pic_2"></div>
                         </div>

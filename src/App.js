@@ -13,7 +13,7 @@ class App extends Component {
         return (
             <Router history = {createHashHistory()}>
                 <Route exact path="/Login" component={Login}/>
-                <Route exact path="/user" component={User}/>
+                <Route exact path="/user/:userId" component={User}/>
                 <Route exact path="/" component={Home}/>
             </Router>
         );
