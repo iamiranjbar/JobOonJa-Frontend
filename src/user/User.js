@@ -9,6 +9,7 @@ class User extends Component {
         this.fetchData = this.fetchData.bind(this);
         this.hoverOn = this.hoverOn.bind(this);
         this.hoverOff = this.hoverOff.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     fetchData(){
@@ -29,7 +30,10 @@ class User extends Component {
     }
 
     hoverOn(keyName){
-    	this.setState({hover: {enable: true, name: keyName, class: "badge badge-success ml-1 my-0 font py-1"}})
+    	var endorsed = this.state.user.skills[keyName].endorsers.find(function(element) {
+							return element == '1'; // 1 is login user 
+							})
+    	this.setState({hover: {enable: true, name: keyName, endorsed: endorsed, class: "badge badge-success ml-1 my-0 font py-1"}})
     	console.log(keyName)
     }
 
@@ -37,8 +41,32 @@ class User extends Component {
     	this.setState({hover: {enable: false, name: "", class: ""}})
     }
 
-    handleClick(){
-    	
+    handleClick(keyName){
+    	const axios = require('axios');
+    	console.log('onClick')
+    	if(this.state.hover.endorsed) {
+    		return
+    	} else if(this.state.login){
+			axios.delete(`http://localhost:8081/IERIA/skill/${this.state.id}/${keyName}`)
+	    	.then(({ data: user }) => {
+	      		this.setState({ user });
+	      		this.setState({loaded: true});
+	      		if(this.state.id == '1'){
+		        	this.setState({login: true})
+		        }
+		        console.log(this.state)
+	    	}).catch(error => this.setState({ error, loaded: true }));
+    	} else {
+			axios.post(`http://localhost:8081/IERIA/skill/${this.state.id}/${keyName}/endorse`)
+	    	.then(({ data: user }) => {
+	      		this.setState({ user });
+	      		this.setState({loaded: true});
+	      		if(this.state.id == '1'){
+		        	this.setState({login: true})
+		        }
+		        console.log(this.state)
+	    	}).catch(error => this.setState({ error, loaded: true }));
+    	}
     }
 
 	render() {
@@ -107,10 +135,19 @@ class User extends Component {
 	                <div class="row font float-left ml-4">
 	                    {Object.keys(this.state.user.skills).map((keyName, i) => (
 							<div id={keyName} class="col-auto">
-            				<div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom"><span class={!(this.state.user.skills[keyName].endorsers.find(function(element) {
-							return element == '1'; // 1 is login user 
-							}))?(this.state.hover.enable && keyName == this.state.hover.name)?this.state.hover.class:"badge blue ml-1 my-0 font py-1 text-info":"badge badge-success ml-1 my-0 font py-1"} onClick={this.handleClick} onMouseEnter={() => this.hoverOn(keyName)} onMouseLeave={() => this.hoverOff(keyName)}>
-							<a href="#">{this.state.user.skills[keyName].point}</a></span>{keyName}</div></div>  
+	            				<div class="bg-white shadow-sm px-1 font rounded-top rounded-bottom">
+		            				<button class="btn btn-defualt btn-link" onClick={() => this.handleClick(keyName)}>
+			            				<span class={(this.state.hover.enable && this.state.login&& keyName == this.state.hover.name) ? "badge badge-danger ml-1 my-0 font py-1"
+			            				: !(this.state.user.skills[keyName].endorsers.find(function(element) {return element == '1'; // 1 is login user 
+										}))?(this.state.hover.enable && keyName == this.state.hover.name)?this.state.hover.class:"badge blue ml-1 my-0 font py-1 text-info"
+										:"badge badge-success ml-1 my-0 font py-1"} onMouseEnter={() => this.hoverOn(keyName)} onMouseLeave={() => this.hoverOff(keyName)}>			
+											{(this.state.hover.enable && this.state.login && keyName == this.state.hover.name) ? "-" :(!this.state.hover.endorsed && this.state.hover.enable
+											&& keyName == this.state.hover.name)?"+":this.state.user.skills[keyName].point}
+										</span>
+									</button>
+									{keyName}
+								</div>
+							</div>  
 						))}
 	                </div>
 	            </div>

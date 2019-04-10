@@ -84,12 +84,6 @@ main{
 	font-family: IRANSans;
 }
 
-a{
-    text-decoration: none;
+a {
+    text-decoration:none;
 }
-
-/*span:hover {
-    font-weight: bold;
-    color: red;
-    background-color: red;
-}*/
