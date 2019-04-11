@@ -1,5 +1,5 @@
 main{
-    min-height: calc(100vh - 60px - 60px);
+    min-height: calc(100vh - 60px);
 }
 
 .blue{
@@ -84,7 +84,6 @@ main{
 	font-family: IRANSans;
 }
 
-span:hover {
-    font-weight: bold;
-    color: red;
+a {
+    text-decoration:none;
 }
