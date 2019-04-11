@@ -5,11 +5,22 @@ class User extends Component {
 	constructor(props){
         super(props);
         const { match: { params } } = this.props;
-        this.state = {loaded: false, skills: [], login: false, id: params.userId, hover: {enable: false, name: "", class: ""}}
+		this.state = {
+			loaded: false, 
+			skills: [], 
+			login: false, 
+			id: params.userId, 
+			hover: {
+				enable: false, 
+				name: "", 
+				class: ""
+			}
+		}
         this.fetchData = this.fetchData.bind(this);
         this.hoverOn = this.hoverOn.bind(this);
         this.hoverOff = this.hoverOff.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+		this.prepareSpan = this.prepareSpan.bind(this);
     }
 
     fetchData(){
@@ -33,16 +44,49 @@ class User extends Component {
 		this.fetchData()
     }
 
+	prepareSpan(keyName) {
+		var spanClass = "";
+		if (this.state.id  == "1" && this.state.login) {
+			spanClass = "badge blue ml-1 my-0 font py-1 text-info"
+			if (this.state.hover.enable)
+				spanClass = "badge badge-danger ml-1 my-0 font py-1"
+		} else {
+			spanClass = "badge blue ml-1 my-0 font py-1 text-info"
+			if (this.state.user.skills[keyName].endorsers.find(
+				function(element) {
+					return element === '1'; // 1 is login user 
+				}) || this.state.hover.enable){
+				spanClass = "badge badge-success ml-1 my-0 font py-1"
+				}
+		}
+		return spanClass
+	}
+
     hoverOn(keyName){
-    	var endorsed = this.state.user.skills[keyName].endorsers.find(function(element) {
+    	var endorsed = this.state.user.skills[keyName].endorsers.find(
+						function(element) {
 							return element == '1'; // 1 is login user 
-							})
-    	this.setState({hover: {enable: true, name: keyName, endorsed: endorsed, class: "badge badge-success ml-1 my-0 font py-1"}})
-    	console.log(keyName)
+						})
+		
+    	this.setState({
+			hover: {
+				enable: true, 
+				name: keyName,
+				endorsed: endorsed, 
+				class: ""
+			}
+		})
+    	// console.log(keyName)
     }
 
     hoverOff(keyName){ 
-    	this.setState({hover: {enable: false, name: "", class: ""}})
+    	this.setState({
+			hover: {
+				enable: false, 
+				name: "", 
+				class: ""
+			}
+		})
     }
 
     handleClick(keyName){
@@ -74,7 +118,7 @@ class User extends Component {
     }
 
 	render() {
-		console.log(this.state)
+		// console.log(this.state)
 	    return (
 	    	<React.Fragment>
 	        <div className="white_bar">
@@ -141,10 +185,10 @@ class User extends Component {
 							<div id={keyName} className="col-auto">
 	            				<div className="bg-white shadow-sm px-1 font rounded-top rounded-bottom">
 		            				<button className="btn btn-defualt btn-link" onClick={() => this.handleClick(keyName)}>
-			            				<span className={(this.state.hover.enable && this.state.login&& keyName == this.state.hover.name) ? "badge badge-danger ml-1 my-0 font py-1"
-			            				: !(this.state.user.skills[keyName].endorsers.find(function(element) {return element == '1'; // 1 is login user 
-										}))?(this.state.hover.enable && keyName == this.state.hover.name)?this.state.hover.className:"badge blue ml-1 my-0 font py-1 text-info"
-										:"badge badge-success ml-1 my-0 font py-1"} onMouseEnter={() => this.hoverOn(keyName)} onMouseLeave={() => this.hoverOff(keyName)}>			
+										<span 
+											className={this.prepareSpan(keyName)} 
+											onMouseEnter={() => this.hoverOn(keyName)} 
+											onMouseLeave={() => this.hoverOff(keyName)}>			
 											{(this.state.hover.enable && this.state.login && keyName == this.state.hover.name) ? "-" :(!this.state.hover.endorsed && this.state.hover.enable
 											&& keyName == this.state.hover.name)?"+":this.state.user.skills[keyName].point}
 										</span>
