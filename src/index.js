@@ -5,7 +5,6 @@ import { createHashHistory } from 'history'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Login from './login';
 
 ReactDOM.render((
    <Router history = {createHashHistory()}>

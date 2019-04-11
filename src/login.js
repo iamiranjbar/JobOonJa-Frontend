@@ -18,7 +18,6 @@ class Login extends Component {
     }
     
     handleUsernameChange(event){
-        console.log('>>>>' + this.state.validUsername)
         this.setState({
             username : event.target.value
         });
@@ -36,7 +35,6 @@ class Login extends Component {
     }
 
     handlePasswordChange(event){
-        console.log('*****' + this.state.validPassword)
         this.setState({
             password : event.target.value
         });
@@ -72,16 +70,16 @@ class Login extends Component {
             <button className="btn btn-lg btn-success btn-block" disabled={!this.state.validUsername || !this.state.validPassword} onClick={()=> this.submitForm(history)}> Login</button>
         ));
 
-        return (   
+        return (  
             <div>
                 <div id="page-wrapper">
                     <div className="row">
-                        <div className="panel">
+                        <div className="panel col-md-4 mx-auto">
                             <div className="panel-heading">
-                                <h2>Login</h2>
+                                <h2>ثبت نام</h2>
                             </div>
-                            <div className="panel-body ">
-                                <div className="col-md-4">
+                            <div className="panel-body">
+                                <div>
                                     <div>
                                         <div className={this.state.usernameClassName}>
                                             <label>Username</label>
@@ -93,7 +91,7 @@ class Login extends Component {
                                         </div>
                                         <div className="form-group">
                                         <Button/> 
-                                         </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
