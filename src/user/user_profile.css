@@ -2,15 +2,6 @@ main{
     min-height: calc(100vh - 60px);
 }
 
-.blue{
-	background-color: rgb(185, 239, 242);
-}
-
-.blue_bar{
-    height: 230px;
-    box-shadow: inset 0px -1px 5px rgba(0,0,0,0.2) ;
-}
-
 .white_bar{
     background-color: #f9f9f9;
 }

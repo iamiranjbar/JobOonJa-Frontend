@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Skill from '../common/Skill'
+import BlueBar from '../common/BlueBar'
 import './user_profile.css'
 
 class User extends Component {
@@ -6,31 +8,22 @@ class User extends Component {
         super(props);
         const { match: { params } } = this.props;
 		this.state = {
-			loaded: false, 
-			skills: [], 
+			loaded: false,
 			login: false, 
-			id: params.userId, 
-			hover: {
-				enable: false, 
-				name: "", 
-				class: ""
-			}
+			id: params.userId
 		}
         this.fetchData = this.fetchData.bind(this);
-        this.hoverOn = this.hoverOn.bind(this);
-        this.hoverOff = this.hoverOff.bind(this);
-		this.handleClick = this.handleClick.bind(this);
-		this.prepareSpan = this.prepareSpan.bind(this);
+        this.updateUserData = this.updateUserData.bind(this);
     }
 
     fetchData(){
         const axios = require('axios'); 
-		axios.get(`http://localhost:8080/user/${this.state.id}`)
+		axios.get(`http://localhost:8081/IERIA/user/${this.state.id}`)
 		.then(response => {
 			// console.log(response)
 			this.setState({ user : response.data });
       		this.setState({loaded: true});
-      		if(this.state.id == '1'){
+      		if(this.state.id === '1'){
 	        	this.setState({login: true})
 	        }
 	        // console.log(this.state)
@@ -40,91 +33,20 @@ class User extends Component {
 		})
     }
 
-    componentDidMount(){
+    componentDidMount() {
 		this.fetchData()
     }
 
-	prepareSpan(keyName) {
-		var spanClass = "";
-		if (this.state.id  == "1" && this.state.login) {
-			spanClass = "badge blue ml-1 my-0 font py-1 text-info"
-			if (this.state.hover.enable)
-				spanClass = "badge badge-danger ml-1 my-0 font py-1"
-		} else {
-			spanClass = "badge blue ml-1 my-0 font py-1 text-info"
-			if (this.state.user.skills[keyName].endorsers.find(
-				function(element) {
-					return element === '1'; // 1 is login user 
-				}) || this.state.hover.enable){
-				spanClass = "badge badge-success ml-1 my-0 font py-1"
-				}
-		}
-		return spanClass
-	}
-
-    hoverOn(keyName){
-    	var endorsed = this.state.user.skills[keyName].endorsers.find(
-						function(element) {
-							return element == '1'; // 1 is login user 
-						})
-		
-    	this.setState({
-			hover: {
-				enable: true, 
-				name: keyName,
-				endorsed: endorsed, 
-				class: ""
-			}
-		})
-    	// console.log(keyName)
-    }
-
-    hoverOff(keyName){ 
-    	this.setState({
-			hover: {
-				enable: false, 
-				name: "", 
-				class: ""
-			}
-		})
-    }
-
-    handleClick(keyName){
-    	const axios = require('axios');
-    	console.log('onClick')
-    	if(this.state.hover.endorsed) {
-    		return
-    	} else if(this.state.login){
-			axios.delete(`http://localhost:8080/skill/${this.state.id}/${keyName}`)
-	    	.then(response => {
-				  this.setState({ user: response.data,
-								loaded: true });
-	      		if(this.state.id == '1'){
-		        	this.setState({login: true})
-		        }
-		        // console.log(this.state)
-	    	}).catch(error => this.setState({ error, loaded: true }));
-    	} else {
-			axios.post(`http://localhost:8080/skill/${this.state.id}/${keyName}/endorse`)
-	    	.then(response => {
-				this.setState({ user: response.data,
-							  loaded: true });
-				if(this.state.id == '1'){
-				  this.setState({login: true})
-			  }
-			  // console.log(this.state)
-	    	}).catch(error => this.setState({ error, loaded: true }));
-    	}
+    updateUserData(userData) {
+    	this.setState({ user: userData});
     }
 
 	render() {
-		// console.log(this.state)
 	    return (
 	    	<React.Fragment>
 	        <div className="white_bar">
 	        <main className="white_bar">
-	            <div className="container-fluid blue blue_bar">
-	            </div>
+	            <BlueBar/>
 	            {this.state.loaded ?(
 	            <div className="container">
 	                <div className="row">
@@ -182,20 +104,9 @@ class User extends Component {
 			        ):(null)}
 	                <div className="row font float-left ml-4">
 	                    {Object.keys(this.state.user.skills).map((keyName, i) => (
-							<div id={keyName} className="col-auto">
-	            				<div className="bg-white shadow-sm px-1 font rounded-top rounded-bottom">
-		            				<button className="btn btn-defualt btn-link" onClick={() => this.handleClick(keyName)}>
-										<span 
-											className={this.prepareSpan(keyName)} 
-											onMouseEnter={() => this.hoverOn(keyName)} 
-											onMouseLeave={() => this.hoverOff(keyName)}>			
-											{(this.state.hover.enable && this.state.login && keyName == this.state.hover.name) ? "-" :(!this.state.hover.endorsed && this.state.hover.enable
-											&& keyName == this.state.hover.name)?"+":this.state.user.skills[keyName].point}
-										</span>
-									</button>
-									{keyName}
-								</div>
-							</div>  
+							<Skill skillData={this.state.user.skills[keyName]}
+							userData={{id: this.state.id, login: this.state.login, hoverEnable: true}}
+							updateUserData={this.updateUserData}/>  
 						))}
 	                </div>
 	            </div>
