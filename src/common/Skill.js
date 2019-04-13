@@ -23,11 +23,11 @@ class Skill extends Component {
     prepareSpanText() {
     	var spanText = "";
 		if (this.props.userData.id  === "1" && this.props.userData.login) {
-			spanText = this.state.skillData.point
+			spanText = this.props.skillData.point
 			if (this.state.hover.enable)
 				spanText = "-"
 		} else {
-			spanText = this.state.skillData.point
+			spanText = this.props.skillData.point
 			if (this.state.hover.enable){
 				spanText = "+"
 			}
@@ -86,14 +86,14 @@ class Skill extends Component {
     	console.log('onClick')
     	if(this.state.hover.endorsed) {
     		return
-    	} else if(this.state.login){
-			axios.delete(`http://localhost:8081/IERIA/skill/${this.state.id}/${keyName}`)
+    	} else if(this.props.userData.login){
+			axios.delete(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}`)
 	    	.then(response => {
 				  // this.setState({ user: response.data});
 				  this.props.updateUserData(response.data)
 	    	}).catch(error => this.setState({ error, loaded: true }));
     	} else {
-			axios.post(`http://localhost:8081/IERIA/skill/${this.state.id}/${keyName}/endorse`)
+			axios.get(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}/endorse`)
 	    	.then(response => {
 				// this.setState({ user: response.data});
 				this.props.updateUserData(response.data)
@@ -102,15 +102,15 @@ class Skill extends Component {
     }
 
     render() {
-    	return (<div id={this.state.skillData.name} className="col-auto">
+    	return (<div id={this.props.skillData.name} className="col-auto">
     				<div className="bg-white shadow-sm font rounded-top rounded-bottom">
         				<span className={this.prepareSpan()}
-        					onClick={() => this.handleClick(this.state.skillData.name)}
-        					onMouseEnter={() => this.hoverOn(this.state.skillData.name)} 
+        					onClick={() => this.handleClick(this.props.skillData.name)}
+        					onMouseEnter={() => this.hoverOn(this.props.skillData.name)} 
 							onMouseLeave={() => this.hoverOff()}>			
 								{this.prepareSpanText()}
 						</span>
-						{this.state.skillData.name}
+						{this.props.skillData.name}
 					</div>
 				</div>);
     }

@@ -5,11 +5,21 @@ class SendBid extends Component {
         super(props);
 		this.state = {
 			project: this.props.project,
-			user: this.props.user
+			user: this.props.user,
+			amount: 0
 		}
-		this.prepareBidHtml = this.prepareBidHtml.bind(this)
+		this.prepareBidHtml = this.prepareBidHtml.bind(this);
+		this.submitBid = this.submitBid.bind(this);
+		this.handleAmountChange = this.handleAmountChange.bind(this);
     }
 
+	handleAmountChange(){
+
+	}
+
+	submitBid(){
+
+	}
     prepareBidHtml(){
     	if(this.state.project.bids != null && this.state.project.bids.find(
 				function(element) {
@@ -28,7 +38,7 @@ class SendBid extends Component {
                 </div>
                 </React.Fragment>
                 )
-    	} else if((Date.now() - this.state.project.deadline) > 0 || this.props.ended) {
+    	} else if(/*(Date.now() - this.state.project.deadline) > 0 ||*/ this.props.ended) {
     		return (
     			<React.Fragment>
     			<div class="row col-auto deadlined font mr-1">
@@ -52,7 +62,7 @@ class SendBid extends Component {
 		        <div className="row">
 		            <input type="text" className="input-box" placeholder="پیشنهاد خود را وارد کنید"></input>
 		            <div className="send-text">تومان</div>
-		            <button className="send-btn">ارسال</button>
+		            <button className="send-btn" onClick={this.submitBid}>ارسال</button>
 		        </div>
 		        </React.Fragment>)
     	}

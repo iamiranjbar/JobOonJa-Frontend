@@ -18,7 +18,7 @@ class User extends Component {
 
     fetchData(){
         const axios = require('axios'); 
-		axios.get(`http://localhost:8081/IERIA/user/${this.state.id}`)
+		axios.get(`http://localhost:8080/user/${this.state.id}`)
 		.then(response => {
 			// console.log(response)
 			this.setState({ user : response.data });
@@ -38,7 +38,9 @@ class User extends Component {
     }
 
     updateUserData(userData) {
-    	this.setState({ user: userData});
+		console.log("*********")
+		this.setState({ user: userData});
+		console.log(this.state.user)
     }
 
 	render() {

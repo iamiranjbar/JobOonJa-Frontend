@@ -34,7 +34,7 @@ class ProjectStatus extends Component {
         <React.Fragment>
         <li className={this.state.timeClass}>
             <span className="flaticon-deadline"></span>
-            <Timer seconds={this.state.project.deadline - Date.now()} brief={false} changeIcon={this.changeIcon}/>
+            <Timer seconds={/*this.state.project.deadline - Date.now()*/60} brief={false} changeIcon={this.changeIcon}/>
         </li>
         <li className="budget-text">
             <span className="flaticon-money-bag"></span>

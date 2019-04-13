@@ -21,7 +21,7 @@ class Project extends Component {
 
     fetchData(){
         const axios = require('axios'); 
-		axios.get(`http://localhost:8081/IERIA/project/${this.state.id}`)
+		axios.get(`http://localhost:8080/project/${this.state.id}`)
 		.then(response => {
 			this.setState({ project : response.data });
       		this.setState({loaded: true});
