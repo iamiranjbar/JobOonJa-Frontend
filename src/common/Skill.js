@@ -93,7 +93,10 @@ class Skill extends Component {
 				  this.props.updateUserData(response.data)
 	    	}).catch(error => this.setState({ error, loaded: true }));
     	} else {
-			axios.get(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}/endorse`)
+			axios.post(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}/endorse` ,
+			{
+				"Access-Control-Allow-Origin" : "*"
+			})
 	    	.then(response => {
 				// this.setState({ user: response.data});
 				this.props.updateUserData(response.data)

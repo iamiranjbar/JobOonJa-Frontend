@@ -7,7 +7,7 @@ import Project from './project/Project'
 
 class App extends Component {
     constructor(props){
-        super(props); 
+        super(props);
     }
     
     render() {

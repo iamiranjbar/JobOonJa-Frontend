@@ -1,9 +1,5 @@
 @import "./font.css";
 
-#root {
-    padding-top: 70px;
-}
-
 .header_text{
     font-family: IRANSans;
     color: #000;

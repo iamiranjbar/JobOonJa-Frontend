@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import './login.css'
 
 class Login extends Component {
     constructor(props){
@@ -74,7 +75,7 @@ class Login extends Component {
             <div>
                 <div id="page-wrapper">
                     <div className="row">
-                        <div className="panel col-md-4 mx-auto">
+                        <div className="panel col-md-4 mx-auto top-element">
                             <div className="panel-heading">
                                 <h2>ثبت نام</h2>
                             </div>

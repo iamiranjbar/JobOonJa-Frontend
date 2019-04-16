@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Skill from '../common/Skill'
 import BlueBar from '../common/BlueBar'
 import './user_profile.css'
+import Header from '../common/Header'
 
 class User extends Component {
 	constructor(props){
@@ -46,6 +47,9 @@ class User extends Component {
 	render() {
 	    return (
 	    	<React.Fragment>
+			<Header otherPages = {{
+				"خروج" : "#"
+			}}/>
 	        <div className="white_bar">
 	        <main className="white_bar">
 	            <BlueBar/>
