@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Skill from '../common/Skill'
 import BlueBar from '../common/BlueBar'
-import './user_profile.css'
 import Header from '../common/Header'
-import Footer from '../common/Footer'
 
 class User extends Component {
 	constructor(props){
@@ -120,7 +118,6 @@ class User extends Component {
 	            ):(<p>loading...</p>)}
 	        </main>
 	        </div>
-			<Footer />
 	        </React.Fragment>
 	    );
 	}
