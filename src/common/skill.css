@@ -2,6 +2,19 @@
 	background-color: rgb(195, 237, 241);
 }
 
-.badge-padding{
-	 padding: 5px;
+.font-color{
+	background-color: rgb(249, 249, 249);
+	color: rgb(118, 118, 118);
+	direction: ltr;
+	border: 1px solid rgb(237,237,237);
+}
+
+.background-color{
+	color: rgb(118, 118, 118);
+}
+
+.span-font{
+	font-size: 12px;
+	font-weight: bold;
+	padding: 3px;
 }

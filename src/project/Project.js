@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Skill from '../common/Skill'
 import BlueBar from '../common/BlueBar'
 import SendBid from './SendBid'
+import Footer from '../common/Footer'
+import Header from '../common/Header'
 import ProjectStatus from './ProjectStatus'
 import './project_bid.css'
 import './flaticon.css'
@@ -42,9 +44,13 @@ class Project extends Component {
 	render() {
 	    return (
 	    	<React.Fragment>
+			<Header otherPages = {{
+				"حساب کاربری" : "#",
+				"خروج" : "#"
+			}}/>
 	        <div className="gray-bar">
 	        <main>
-	        <div className="container-fluid sky-blue-bar"></div>
+	        <BlueBar isHome = {true}/>
 	        <div className="container white-main-form main-form-alter">
 	            <div className="row">
 	                <div className="col-3">
@@ -77,13 +83,14 @@ class Project extends Component {
 	            <div className="row font req-alter req-dir">
 	                {this.state.loaded ? Object.keys(this.state.project.skills).map((keyName, i) => (
 						<Skill skillData={this.state.project.skills[keyName]}
-						userData={{id: '1', login: true, hoverEnable: false}}/>
+						userData={{id: '1', login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
 					)) : null}
 	            </div>
 	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: '1'}} ended={this.state.ended}/> : null}
 	        </div>
 	    </main>
         </div>
+		<Footer />
         </React.Fragment>
     );
 	}

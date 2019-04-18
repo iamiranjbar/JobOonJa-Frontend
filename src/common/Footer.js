@@ -7,7 +7,7 @@ class Footer extends Component {
 
     render() {
     	return (
-            <footer class="footer-copyright text-center py-3 footer_text bg-dark footer_bar text-muted footer-pos">
+            <footer className="footer-copyright text-center py-3 footer_text bg-dark footer_bar text-muted footer-pos">
                 © تمامی حقوق این سایت متعلق به جاب‌اونجا می‌باشد
             </footer>
         );

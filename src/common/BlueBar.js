@@ -7,8 +7,9 @@ class BlueBar extends Component {
     }
 
     render() {
-    	return (<div className="container-fluid blue blue_bar">
-	            </div>
+    	return (this.props.isHome ? <div className="container-fluid blue blue_bar">
+	            </div> : <div className="container-fluid blue home_blue_bar">
+	            </div> 
     		);
     }
 }

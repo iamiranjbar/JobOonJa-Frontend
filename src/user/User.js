@@ -49,11 +49,12 @@ class User extends Component {
 	    return (
 	    	<React.Fragment>
 			<Header otherPages = {{
+				"حساب کاربری" : "#",
 				"خروج" : "#"
 			}}/>
 	        <div className="white_bar">
 	        <main className="white_bar">
-	            <BlueBar/>
+	            <BlueBar isHome = {true}/>
 	            {this.state.loaded ?(
 	            <div className="container">
 	                <div className="row">
@@ -112,7 +113,7 @@ class User extends Component {
 	                <div className="row font float-left ml-4">
 	                    {Object.keys(this.state.user.skills).map((keyName, i) => (
 							<Skill skillData={this.state.user.skills[keyName]}
-							userData={{id: this.state.id, login: this.state.login, hoverEnable: true}}
+							userData={{id: this.state.id, login: this.state.login, hoverEnable: true, badgeEnable: true, alterBackground: false}}
 							updateUserData={this.updateUserData}/>  
 						))}
 	                </div>

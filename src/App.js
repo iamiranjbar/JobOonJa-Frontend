@@ -4,6 +4,7 @@ import { createHashHistory } from 'history'
 import Login from "./login"
 import User from './user/User'
 import Project from './project/Project'
+import Home from './home/Home'
 
 class App extends Component {
     constructor(props){
@@ -16,12 +17,13 @@ class App extends Component {
                 <Route exact path="/Login" component={Login}/>
                 <Route exact path="/user/:userId" component={User}/>
                 <Route exact path="/project/:projectId" component={Project}/>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/home" component={Home}/>
+                <Route exact path="/" component={Dashboard}/>
             </Router>
         );
     }
 }
-class Home extends Component{
+class Dashboard extends Component{
     constructor(props){
         super(props);
     }
