@@ -69,7 +69,7 @@ class User extends Component {
 			}}/>
 	        <div className="white_bar">
 	        <main className="white_bar">
-	            <BlueBar isHome = {true}/>
+	            <BlueBar notHome = {true}/>
 	            {(this.state.loaded && this.state.skills) ?(
 	            <div className="container">
 	                <div className="row">

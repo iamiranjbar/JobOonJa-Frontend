@@ -57,7 +57,7 @@ class Project extends Component {
 			}}/>
 	        <div className="gray-bar">
 	        <main>
-	        <BlueBar isHome = {true}/>
+	        <BlueBar notHome = {true}/>
 	        <div className="container white-main-form main-form-alter">
 	            <div className="row">
 	                <div className="col-3">

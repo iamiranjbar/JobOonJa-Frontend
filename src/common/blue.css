@@ -11,3 +11,29 @@
     height: 330px;
     box-shadow: inset 0px -1px 5px rgba(0,0,0,0.2) ;
 }
+
+.top-hiding{
+    height: 60px;
+}
+
+.tit{
+    direction: rtl;
+    margin-right: 10%;
+    margin-top:2%;
+}
+
+.title-text{
+    color: rgb(34, 127, 137);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.desc{
+    direction: rtl;
+    margin-right: 11%;
+    margin-top:1%;
+}
+
+.desc-text{
+    font-size: 15px;
+}

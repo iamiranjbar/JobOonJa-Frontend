@@ -51,7 +51,7 @@ class User extends Component {
             }/>
 	        <div className="white_bar">
 	        <main className="white_bar">
-	            <BlueBar isHome = {false}/>
+	            <BlueBar notHome = {false}/>
                 <div className="container">
                     <div className="row">
                         <div className="col-3"></div>
