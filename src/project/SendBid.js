@@ -8,26 +8,49 @@ class SendBid extends Component {
 			project: this.props.project,
 			user: this.props.user,
 			amount: 0,
-			errorMsg: ""
+			errorMsg: "",
+            validAmount: false
 		}
 		this.prepareBidHtml = this.prepareBidHtml.bind(this);
 		this.submitBid = this.submitBid.bind(this);
 		this.handleAmountChange = this.handleAmountChange.bind(this);
+        this.isNumeric = this.isNumeric.bind(this);
+    }
+
+    isNumeric(num){
+      return !isNaN(num)
     }
 
 	handleAmountChange(event){
 		this.setState({
 			amount: event.target.value
 		});
+        if(event.target.value == ""){
+            this.setState({
+                errorMsg: "مقدار پیشنهاد نمی تواند خالی باشد",
+                validAmount:false
+            })
+        }else if(!this.isNumeric(event.target.value)){
+            this.setState({
+                errorMsg: "مقدار پیشنهاد یک عدد است",
+                validAmount:false
+            })
+        }
 	}
 
 	submitBid(){
 		Axios.post(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}`)
 		.then(response =>{
 			console.log(response);
+            this.setState({
+                errorMsg: 'امکان ارسال وجود ندارد'
+            })
 		})
 		.catch(err => {
 			console.log(err);
+            this.setState({
+                errorMsg: 'امکان ارسال وجود ندارد'
+            })
 		})
 	}
 
@@ -75,9 +98,14 @@ class SendBid extends Component {
 		            <div className="send-text">تومان</div>
 		            <button className="send-btn" onClick={this.submitBid}>ارسال</button>
 		        </div>
+                <div className="row font">
+                <div>
+                    <span class="flaticon-danger danger"></span>
+                </div>
 				<div>
 					{this.state.errorMsg}
 				</div>
+                </div>
 		        </React.Fragment>)
     	}
     }

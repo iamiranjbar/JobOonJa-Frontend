@@ -4,6 +4,7 @@ import BlueBar from '../common/BlueBar'
 import './user_profile.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
+import AddSkill from './AddSkill'
 
 class User extends Component {
 	constructor(props){
@@ -16,6 +17,7 @@ class User extends Component {
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateUserData = this.updateUserData.bind(this);
+        this.fetchSkills = this.fetchSkills.bind(this);
     }
 
     fetchData(){
@@ -33,6 +35,18 @@ class User extends Component {
 		.catch(err => {
 			console.log(err)
 		})
+		this.fetchSkills();
+    }
+
+    fetchSkills() {
+    	const axios = require('axios'); 
+    	axios.get(`http://localhost:8080/skill/${this.state.id}`)
+		.then(response => {
+			this.setState({ skills : response.data });
+		})
+		.catch(err => {
+			console.log(err)
+		})	
     }
 
     componentDidMount() {
@@ -41,6 +55,7 @@ class User extends Component {
 
     updateUserData(userData) {
 		console.log("*********")
+		this.fetchSkills();
 		this.setState({ user: userData});
 		console.log(this.state.user)
     }
@@ -55,7 +70,7 @@ class User extends Component {
 	        <div className="white_bar">
 	        <main className="white_bar">
 	            <BlueBar isHome = {true}/>
-	            {this.state.loaded ?(
+	            {(this.state.loaded && this.state.skills) ?(
 	            <div className="container">
 	                <div className="row">
 	                    <div className="col-3">
@@ -95,16 +110,10 @@ class User extends Component {
 			                            	مهارت ها:
 			                            </b>
 			                        </div>
-			                        <div className="card bg-light pl-1 mr-2 shadow-sm px-1 py-1">
-			                            <form action="" method="" className="white_bar">
-			                                <select name="" className="bg-light description_skills font pl-5 py-1">
-			                                    <option value="-- انتخاب مهارت --">-- انتخاب مهارت --</option>
-			                                    <option value="CSS" dir="ltr">CSS</option>
-			                                    <option value="C++" dir="ltr">C++</option>
-			                                </select>
-			                                <button className="btn btn-primary description_skills font mr-1">افزودن مهارت</button>
-			                            </form>
-			                        </div>
+			                        {(this.state.loaded && this.state.skills) ?
+			                        	<AddSkill userId={this.state.id} skillsData={this.state.skills} updateUserData={this.updateUserData}/>
+			                        	: null
+			                        }
 			                    </div>
 			                </div>
 			            </div>
