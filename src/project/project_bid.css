@@ -172,7 +172,8 @@ main{
 }
 
 .deadlined {
-    margin-top: 30px;
+    margin-top: 5px;
+    margin-right: 42px;
     color: red;
 }
 

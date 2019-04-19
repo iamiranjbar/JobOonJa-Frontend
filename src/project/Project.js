@@ -19,11 +19,12 @@ class Project extends Component {
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateState = this.updateState.bind(this);
+        this.updateProjectData = this.updateProjectData.bind(this);
     }
 
     fetchData(){
         const axios = require('axios'); 
-		axios.get(`http://localhost:8081/IERIA/project/${this.state.id}`)
+		axios.get(`http://localhost:8080/project/${this.state.id}`)
 		.then(response => {
 			this.setState({ project : response.data });
       		this.setState({loaded: true});
@@ -31,6 +32,12 @@ class Project extends Component {
 		.catch(err => {
 			console.log(err)
 		})
+    }
+
+    updateProjectData(projectData) {
+		console.log("*********")
+		this.setState({ project: projectData});
+		console.log(this.state.project)
     }
 
     updateState(endedState){
@@ -86,7 +93,7 @@ class Project extends Component {
 						userData={{id: '1', login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
 					)) : null}
 	            </div>
-	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: '1'}} ended={this.state.ended}/> : null}
+	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: '1'}} updateProjectData={this.updateProjectData} ended={this.state.ended}/> : null}
 	        </div>
 	    </main>
         </div>

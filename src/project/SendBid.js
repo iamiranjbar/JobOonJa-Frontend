@@ -35,16 +35,24 @@ class SendBid extends Component {
                 errorMsg: "مقدار پیشنهاد یک عدد است",
                 validAmount:false
             })
+        } else {
+            this.setState({
+                errorMsg: "",
+                validAmount:true
+            })
         }
 	}
 
 	submitBid(){
-		Axios.post(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}`)
-		.then(response =>{
-			console.log(response);
-            this.setState({
-                errorMsg: 'امکان ارسال وجود ندارد'
+        console.log(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}`)
+        const axios = require('axios');
+		axios.post(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}` ,
+            {
+                "Access-Control-Allow-Origin" : "*"
             })
+		.then(response =>{
+			console.log(response.data);
+            this.props.updateProjectData(response.data)
 		})
 		.catch(err => {
 			console.log(err);
@@ -55,9 +63,9 @@ class SendBid extends Component {
 	}
 
     prepareBidHtml(){
-    	if(this.state.project.bids != null && this.state.project.bids.find(
+    	if(this.props.project.bids != null && this.props.project.bids.find(
 				function(element) {
-					return element.user.id == this.state.user.id; 
+					return element.user.id == this.props.user.id; 
 				}))
     	{
     		return (
@@ -72,13 +80,13 @@ class SendBid extends Component {
                 </div>
                 </React.Fragment>
                 )
-    	} else if((Date.now() - this.state.project.deadline) > 0 || this.props.ended) {
+    	}else if((Date.now() - this.props.project.deadline) > 0 || this.props.ended) {
     		return (
     			<React.Fragment>
-    			<div class="row col-auto deadlined font mr-1">
+    			<div className="row col-auto deadlined font mr-1">
     			<div className="row font">
     			<div>
-                    <span class="flaticon-danger danger"></span>
+                    <span className="flaticon-danger danger"></span>
                 </div>
                 <div>
                 مهلت ارسال پیشنهاد برای این پروژه به پایان رسیده&zwnj;است!
@@ -87,22 +95,19 @@ class SendBid extends Component {
                 </div>
                 </React.Fragment>
                 )
-    	} else {
+    	}else {
     		return (
 		    	<React.Fragment>
-		    	<div className="row col-12 bid-title">
+		    	<div className="row col-12 bid-title font">
 		        ثبت پیشنهاد
 		        </div>
-		        <div className="row">
-		            <input type="text" className="input-box" placeholder="پیشنهاد خود را وارد کنید" onChange={this.handleAmountChange}></input>
+		        <div className="row font">
+		            <input type="text font" className="input-box" placeholder="پیشنهاد خود را وارد کنید" onChange={this.handleAmountChange}></input>
 		            <div className="send-text">تومان</div>
 		            <button className="send-btn" onClick={this.submitBid}>ارسال</button>
 		        </div>
                 <div className="row font">
-                <div>
-                    <span class="flaticon-danger danger"></span>
-                </div>
-				<div>
+				<div className="deadlined">
 					{this.state.errorMsg}
 				</div>
                 </div>
