@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import BlueBar from '../common/BlueBar'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
-import ProjectCard from '../home/ProjectCard'
+import ProjectCard from './ProjectCard'
+import UserCard from './UserCard'
 import './home.css'
 
 class User extends Component {
@@ -54,7 +55,11 @@ class User extends Component {
 	            <BlueBar notHome = {false}/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-3"></div>
+                        <div className="col-3">
+                            {this.state.usersLoaded ?this.state.users.map( function(user) {
+                                return <UserCard userData={user}/>
+                            }): null}
+                        </div>
                         <div className="col-9">
                             <div className="projectsList">
                                 {this.state.projectsLoaded ? this.state.projects.map( function(project) {

@@ -22,7 +22,7 @@ class ProjectCard extends Component {
     render() {
     	return (
             <React.Fragment>
-	        <div className="container frame">
+	        <div className="container frame shadow-sm">
 	            <div className="row">
 	                <div className="col-2">
 	                    <img className="projectCard-image" src={this.props.projectData.imageUrl}></img>
