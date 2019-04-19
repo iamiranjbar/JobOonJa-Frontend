@@ -74,3 +74,7 @@ main{
 .font{
 	font-family: IRANSans;
 }
+
+.ltr-dir {
+    direction: ltr;
+}

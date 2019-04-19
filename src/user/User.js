@@ -119,7 +119,7 @@ class User extends Component {
 			            </div>
 			        </div>
 			        ):(null)}
-	                <div className="row font float-left ml-4">
+	                <div className="row font float-left ml-4 ltr-dir">
 	                    {Object.keys(this.state.user.skills).map((keyName, i) => (
 							<Skill skillData={this.state.user.skills[keyName]}
 							userData={{id: this.state.id, login: this.state.login, hoverEnable: true, badgeEnable: true, alterBackground: false}}
