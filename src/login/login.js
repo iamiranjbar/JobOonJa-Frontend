@@ -70,7 +70,7 @@ class Login extends Component {
 
     render() {
         const Button = withRouter(({ history}) => (
-            <button className="btn btn-lg btn-info btn-block" disabled={!this.state.validUsername || !this.state.validPassword} onClick={()=> this.submitForm(history)}> ورود</button>
+            <button className="btn btn-lg btn-info btn-block" disabled={!this.state.validUsername || !this.state.validPassword} onClick={()=> this.submitForm(history)}>ثبت</button>
         ));
 
         return (
@@ -109,7 +109,7 @@ class Login extends Component {
                         <div className="row">
                             <div className="panel col-md-4 mx-auto top-element">
                                 <div className="panel-heading text-center">
-                                    <h4>به جاب اون جا خوش آمدید!</h4>
+                                    <h4>ورود</h4>
                                 </div>
                                 <div className="panel-body">
                                     <div>
