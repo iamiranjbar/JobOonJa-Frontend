@@ -2,7 +2,7 @@
 	background-color: rgb(195, 237, 241);
 }
 
-.font-color{
+.home-font-color{
 	background-color: rgb(249, 249, 249);
 	color: rgb(118, 118, 118);
 	direction: ltr;
@@ -13,8 +13,9 @@
 	color: rgb(118, 118, 118);
 }
 
-.span-font{
+.home-span-font{
 	font-size: 12px;
 	font-weight: bold;
 	padding: 3px;
 }
+

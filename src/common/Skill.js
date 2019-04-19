@@ -38,16 +38,16 @@ class Skill extends Component {
     prepareSpan() {
 			var spanClass = "";
 			if (this.props.userData.id  === "1" && this.props.userData.login) {
-				spanClass += "badge badge-blue font text-info ml-1 my-0 mr-1"
+				spanClass = "badge badge-blue font text-info ml-1 my-0 mr-1"
 				if (this.state.hover.enable)
-					spanClass += "badge badge-danger font ml-1 my-0 mr-1"
+					spanClass = "badge badge-danger font ml-1 my-0 mr-1"
 			} else {
-				spanClass += "badge badge-blue font text-info ml-1 my-0 mr-1"
+				spanClass = "badge badge-blue font text-info ml-1 my-0 mr-1"
 				if (this.props.skillData.endorsers.find(
 					function(element) {
 						return element === '1'; // 1 is login user 
 					}) || this.state.hover.enable){
-					spanClass += "badge badge-success font ml-1 my-0 mr-1"
+					spanClass = "badge badge-success font ml-1 my-0 mr-1"
 					}
 			}
 			return this.state.userData.hoverEnable ? spanClass : "badge badge-blue font text-info ml-1 my-0 mr-1"
@@ -55,7 +55,7 @@ class Skill extends Component {
 
 		prepareBackground(){
 			return (this.props.userData.alterBackground) ?
-			"span-font font-color shadow-sm font rounded-top rounded-bottom"
+			"home-span-font home-font-color shadow-sm font rounded-top rounded-bottom"
 			: "span-font bg-white shadow-sm font rounded-top rounded-bottom"
 		}
 
