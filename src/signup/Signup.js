@@ -116,11 +116,6 @@ class Signup extends Component {
                 })
             }
         }
-        console.log("________");
-        console.log(event.target.value);
-        console.log(this.state.passwordRepeat);
-        console.log(this.state.validPassword);
-        console.log("________");
     }
 
     handlePasswordRepeatChange(event){

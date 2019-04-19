@@ -29,7 +29,9 @@ class ProjectCard extends Component {
 	        <div className={"container "+this.state.frameClass+" shadow-sm"}>
 	            <div className="row">
 	                <div className="col-2">
-	                    <img className="projectCard-image" src={this.props.projectData.imageUrl}></img>
+	                    <a href={"#/project/"+this.props.projectData.id}>
+							<img className="projectCard-image" src={this.props.projectData.imageUrl}></img>
+						</a>
 	                </div>
 	                <div className="col-10">
 	                    <ul className="project-list-text font">

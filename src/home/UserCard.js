@@ -17,7 +17,9 @@ class UserCard extends Component {
 	                <div className="col-9">
 	                    <div className="flex user-list-text font">
 	              			<div className="user-name-text">
-								{this.props.userData.firstName + ' ' + this.props.userData.lastName}
+							  	<a href={"#/user/"+this.props.userData.id}>
+									{this.props.userData.firstName + ' ' + this.props.userData.lastName}
+								</a>
 					        </div>
 	                        <div className="user-desc-text">
 								{this.props.userData.jobTitle}

@@ -52,7 +52,7 @@ class Project extends Component {
 	    return (
 	    	<React.Fragment>
 			<Header otherPages = {{
-				"حساب کاربری" : "#",
+				"حساب کاربری" : "#/user/1",
 				"خروج" : "#"
 			}}/>
 	        <div className="gray-bar">

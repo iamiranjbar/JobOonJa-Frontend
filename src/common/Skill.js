@@ -114,6 +114,7 @@ class Skill extends Component {
     	return (
 				<div id={this.props.skillData.name} className="mx-1">
 					<div className={this.prepareBackground()}>
+						{this.props.skillData.name}
 						{this.props.userData.badgeEnable ? (
 									<span className={this.prepareSpan()}
 									onClick={() => this.handleClick(this.props.skillData.name)}
@@ -121,7 +122,6 @@ class Skill extends Component {
 									onMouseLeave={() => this.hoverOff()}>			
 								{this.prepareSpanText()}
 						</span>) : null}
-						{this.props.skillData.name}
 					</div>
 				</div>);
     }

@@ -64,7 +64,7 @@ class User extends Component {
 	    return (
 	    	<React.Fragment>
 			<Header otherPages = {{
-				"حساب کاربری" : "#",
+				"حساب کاربری" : "#/user/1",
 				"خروج" : "#"
 			}}/>
 	        <div className="white_bar">

@@ -20,7 +20,7 @@ class App extends Component {
                 <Route exact path="/user/:userId" component={User}/>
                 <Route exact path="/project/:projectId" component={Project}/>
                 <Route exact path="/home" component={Home}/>
-                <Route exact path="/" component={Dashboard}/>
+                <Route exact path="/" component={Home}/>
             </Router>
         );
     }
@@ -32,29 +32,11 @@ class Dashboard extends Component{
     render(){
         return(
             <div>
-                <nav className="navbar navbar-default navbar-static-top" role="navigation">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <Link className="navbar-brand" to="/">Devil May Cry</Link>
-                    <ul className="nav navbar-top-links navbar-right">
-                        <li className="dropdown">
-                            <a className="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i className="fa fa-user fa-fw"></i> <i className="fa fa-caret-down"></i>
-                            </a>
-                            <ul className="dropdown-menu dropdown-user">
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
                 <div id="page-wrapper">
                     <div className="row">
                         <div className="panel">
                             <div className="panel-heading">
-                                <h2>Main Page</h2>
+                                <h2 className="conter-text">Main Page</h2>
                             </div>
                             <div className="panel-body ">
                                 <div className="col-md-4">
