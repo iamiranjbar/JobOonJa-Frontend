@@ -6,6 +6,14 @@
     direction: ltr;
 }
 
-.main{
+.main {
     min-height: calc(100vh);
+}
+
+.error {
+    border: 1px lightcoral solid;
+}
+
+.success {
+    border: 1px lightgreen solid;
 }
