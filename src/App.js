@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Router, Link, Route} from 'react-router-dom'
 import { createHashHistory } from 'history'
-import Login from "./login"
+import Login from "./login/login"
 import User from './user/User'
 import Project from './project/Project'
 import Home from './home/Home'
+import Signup from './signup/Signup'
 
 class App extends Component {
     constructor(props){
@@ -15,6 +16,7 @@ class App extends Component {
         return (
             <Router history = {createHashHistory()}>
                 <Route exact path="/Login" component={Login}/>
+                <Route exact path="/Signup" component={Signup}/>
                 <Route exact path="/user/:userId" component={User}/>
                 <Route exact path="/project/:projectId" component={Project}/>
                 <Route exact path="/home" component={Home}/>
