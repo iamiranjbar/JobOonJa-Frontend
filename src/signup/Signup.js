@@ -9,21 +9,19 @@ class Signup extends Component {
         super(props);
         this.state ={
             firstname : "",
-            firstnameClassName: "form-group has-warning",
+            firstnameClassName: "form-control input-md",
             lastname : "",
-            lastnameClassName: "form-group has-warning",
+            lastnameClassName: "form-control input-md",
             username : "",
-            usernameClassName: "form-group has-warning",
+            usernameClassName: "form-control input-md",
             password : "",
-            passwordClassName : "form-group has-warning",
+            passwordClassName : "form-control input-md",
             passwordRepeat: "",
-            passwordRepeatClassName : "form-group has-warning",
+            passwordRepeatClassName : "form-control input-md",
             jobTitle : "",
-            jobTitleClassName : "form-group has-warning",
+            jobTitleClassName : "form-control input-md",
             proPic: "",
-            proPicClassName: "form-group has-warning",
             bio : "",
-            bioClassName : "form-group has-warning",
             validFirstname:false,
             validLastname:false,
             validUsername:false,
@@ -47,12 +45,12 @@ class Signup extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                firstnameClassName : "form-group has-warning",
+                firstnameClassName : "form-control input-md error",
                 validFirstname:false
             })
         }else {
             this.setState({
-                firstClassName:"form-group has-success",
+                firstnameClassName:"form-control input-md success",
                 validFirstname: true
             })
         }
@@ -64,12 +62,12 @@ class Signup extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                lastnameClassName : "form-group has-warning",
+                lastnameClassName : "form-control input-md error",
                 validLastname:false
             })
         }else {
             this.setState({
-                lastnameClassName:"form-group has-success",
+                lastnameClassName:"form-control input-md success",
                 validLastname: true
             })
         }
@@ -81,12 +79,12 @@ class Signup extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                usernameClassName : "form-group has-warning",
+                usernameClassName : "form-control input-md error",
                 validUsername:false
             })
         }else {
             this.setState({
-                usernameClassName:"form-group has-success",
+                usernameClassName:"form-control input-md success",
                 validUsername: true
             })
         }
@@ -96,32 +94,56 @@ class Signup extends Component {
         this.setState({
             password : event.target.value
         });
-        if(event.target.value == "" || event.target.value != this.state.passwordRepeat){
+        if(event.target.value == ""){
             this.setState({
-                passwordClassName : "form-group has-warning",
+                passwordClassName : "form-control input-md error",
+                passwordRepeatClassName:"form-control input-md error",
                 validPassword:false
             })
         }else {
-            this.setState({
-                passwordClassName:"form-group has-success",
-                validPassword: true 
-            })
+            if (event.target.value != this.state.passwordRepeat){
+                this.setState({
+                    passwordClassName:"form-control input-md error",
+                    passwordRepeatClassName:"form-control input-md error",
+                    validPassword: false 
+                })
+            }
+            else{
+                this.setState({
+                    passwordClassName:"form-control input-md success",
+                    passwordRepeatClassName:"form-control input-md success",
+                    validPassword: true 
+                })
+            }
         }
+        console.log("________");
+        console.log(event.target.value);
+        console.log(this.state.passwordRepeat);
+        console.log(this.state.validPassword);
+        console.log("________");
     }
 
     handlePasswordRepeatChange(event){
         this.setState({
             passwordRepeat : event.target.value
         });
-        if(event.target.value == "" || event.target.value != this.state.password){
+        if(event.target.value == ""){
             this.setState({
-                passwordRepeatClassName : "form-group has-warning",
-                validPasswordRepeat:false
+                passwordClassName : "form-control input-md error",
+                passwordRepeatClassName:"form-control input-md error",
+                validPassword:false
+            })
+        }else if(event.target.value != this.state.password) {
+            this.setState({
+                passwordClassName : "form-control input-md error",
+                passwordRepeatClassName:"form-control input-md error",
+                validPassword:false
             })
         }else {
             this.setState({
-                passwordRepeatClassName:"form-group has-success",
-                validPasswordRepeat: true
+                passwordClassName : "form-control input-md success",
+                passwordRepeatClassName:"form-control input-md success",
+                validPassword:true
             })
         }
     }
@@ -132,12 +154,12 @@ class Signup extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                jobTitleClassName : "form-group has-warning",
+                jobTitleClassName : "form-control input-md error",
                 validJobTitle:false
             })
         }else {
             this.setState({
-                jobTitleClassName:"form-group has-success",
+                jobTitleClassName:"form-control input-md success",
                 validJobTitle: true
             })
         }
@@ -147,34 +169,12 @@ class Signup extends Component {
         this.setState({
             proPic : event.target.value
         });
-        if(event.target.value == ""){
-            this.setState({
-                proPicClassName : "form-group has-warning",
-                validProPic:false
-            })
-        }else {
-            this.setState({
-                proPicClassName:"form-group has-success",
-                validProPic: true
-            })
-        }
     }
 
     handleBioChange(event){
         this.setState({
             bio : event.target.value
         });
-        if(event.target.value == ""){
-            this.setState({
-                bioClassName : "form-group has-warning",
-                validBio:false
-            })
-        }else {
-            this.setState({
-                bioClassName:"form-group has-success",
-                validBio: true
-            })
-        }
     }
 
     submitForm() {
@@ -193,7 +193,10 @@ class Signup extends Component {
 
     render() {
         const Button = withRouter(({ history}) => (
-            <button className="btn btn-lg btn-info btn-block" disabled={!this.state.validUsername || !this.state.validPassword} onClick={()=> this.submitForm(history)}>ثبت</button>
+            <button className="btn btn-lg btn-info btn-block" 
+                    disabled={!this.state.validUsername || !this.state.validPassword
+                        || !this.state.validFirstname || !this.state.validLastname || !this.state.jobTitle} 
+                    onClick={()=> this.submitForm(history)}>ثبت</button>
         ));
 
         return (
@@ -211,44 +214,44 @@ class Signup extends Component {
                     <div className="d-flex">
                         <div className="form-group shadow-sm col-md-6">
                             <label for="name" className="float-right"><b>نام</b></label>
-                            <input className="form-control input-md" id="FirstName" name="firstinput" placeholder="نام" type="text" required/>
+                            <input className={this.state.firstnameClassName} id="FirstName" name="firstinput" placeholder="نام" type="text" onChange={this.handleFirstnameChange} required/>
                         </div>
                         <div className="form-group shadow-sm col-md-6">
                             <label for="lastname" className="float-right"><b>نام خانوادگی</b></label>
-                            <input className="form-control input-md" id="LastNmae" name="lastnametinput" placeholder="نام خانوادگی" type="text" required/>
+                            <input className={this.state.lastnameClassName} id="LastNmae" name="lastnametinput" placeholder="نام خانوادگی" type="text" onChange={this.handleLastnameChange} required/>
                         </div>
                     </div>
                     <div className="d-flex">
                         <div className="form-group shadow-sm col-md-6">
                             <label for="username" className="float-right"><b>نام کاربری</b></label>
-                            <input className="form-control input-md" id="textinput" name="textinput" placeholder="نام کاربری" type="text" required/>
+                            <input className={this.state.usernameClassName} id="textinput" name="textinput" placeholder="نام کاربری" type="text" onChange={this.handleUsernameChange} required/>
                         </div>
                         <div className="form-group shadow-sm col-md-6">
                             <label for="password" className="float-right"><b>رمز</b></label>
-                            <input className="form-control input-md" id="passwordinput" name="passwordinput" placeholder="رمز" type="password"  required/>
+                            <input className={this.state.passwordClassName} id="passwordinput" name="passwordinput" placeholder="رمز" type="password" onChange={this.handlePasswordChange} required/>
                         </div>
                     </div>
                     <div className="d-flex">
                         <div className="form-group shadow-sm col-md-6">
                             <label for="repeat" className="float-right"><b>تکرار رمز</b></label>
-                            <input className="form-control input-md" id="Repeatinput" name="Repeatinput" placeholder="تکرار رمز" type="password"  required/>
+                            <input className={this.state.passwordRepeatClassName} id="Repeatinput" name="Repeatinput" placeholder="تکرار رمز" type="password" onChange={this.handlePasswordRepeatChange}  required/>
                         </div>
                         <div className="form-group shadow-sm col-md-6">
                             <label for="title" className="float-right"><b>عنوان شغلی</b></label>
-                            <input className="form-control input-md" id="Repeatinput" name="JobTitle" placeholder="عنوان شغلی" type="text" required/>
+                            <input className={this.state.jobTitleClassName} id="Repeatinput" name="JobTitle" placeholder="عنوان شغلی" type="text" onChange={this.handleJobTitleChange} required/>
                     </div>
                     </div>
                     <div className="form-group shadow-sm">
                         <label for="link" className="float-right"><b>لینک عکس</b></label>
-                        <input className="form-control input-md" id="Repeatinput" name="ProfileLink" placeholder="'لینک' عکس پروفایل" type="text" required/>
+                        <input className="form-control input-md" id="Repeatinput" name="ProfileLink" placeholder="'لینک' عکس پروفایل" type="text" onChange={this.handleProPicChange} required/>
                     </div>
                     <div className="form-group shadow-sm">
                         <label for="bio" className="float-right"><b>بایو</b></label>
-                        <textarea className="form-control input-md" form="signup" name="Bio" placeholder="بیو"></textarea>
+                        <textarea className="form-control input-md" form="signup" name="Bio" placeholder="بیو" onChange={this.handleBioChange}></textarea>
                     </div>
                     <div>
                         <label>
-                            <input type="checkbox" checked="checked" name="remember" className="remember-me"/> مرا به خاطر بسپار
+                            <input type="checkbox" checked="false" name="remember" className="remember-me"/> مرا به خاطر بسپار
                         </label>
                     </div>
                     <Button />

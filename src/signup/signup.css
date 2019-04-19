@@ -29,3 +29,11 @@
     max-height: 100vh;
     margin: auto;
 }
+
+.error {
+    border: 1px lightcoral solid;
+}
+
+.success {
+    border: 1px lightgreen solid;
+}
