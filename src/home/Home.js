@@ -11,9 +11,12 @@ class User extends Component {
         super(props);
         this.state = {
             projectsLoaded: false,
-            usersLoaded: false
+            usersLoaded: false,
+            searchText : "",
+			validSearch: false
         }
         this.fetchData = this.fetchData.bind(this);
+        this.handleSearchChange = this.handleSearchChange.bind(this);
     }
 
     fetchData(){
@@ -40,6 +43,21 @@ class User extends Component {
 		this.fetchData()
     }
 
+    handleSearchChange(event){
+		this.setState({
+			searchText : event.target.value
+		});
+		if(event.target.value == ""){
+            this.setState({
+                validFirstname:false
+            })
+        }else {
+            this.setState({
+                validFirstname: true
+            })
+        }
+    }
+    
 	render() {
         console.log(this.state.projects)
 	    return (
@@ -59,7 +77,14 @@ class User extends Component {
                             <div className="user-list">
                                 <div>
                                     <form class="form" method="POST">
-                                        <input id="user-search" class="form-control" name="name" type="text" placeholder="جستجو نام کاربر" />
+                                        <input 
+                                            id="user-search" 
+                                            class="form-control" 
+                                            name="name" 
+                                            type="text" 
+                                            placeholder="جستجو نام کاربر" 
+                                            onChange={this.handleSearchChange}
+                                        />
                                     </form>
                                 </div>
                                 <div>

@@ -3,8 +3,30 @@ import './blue.css'
 
 class BlueBar extends Component {
 	constructor(props) {
-        super(props);
+		super(props);
+
+		this.state = {
+			searchText : "",
+			validSearch: false
+		}
+
+		this.handleSearchChange = this.handleSearchChange.bind(this);
     }
+
+	handleSearchChange(event){
+		this.setState({
+			searchText : event.target.value
+		});
+		if(event.target.value == ""){
+            this.setState({
+                validFirstname:false
+            })
+        }else {
+            this.setState({
+                validFirstname: true
+            })
+        }
+	}
 
     render() {
     	return (this.props.notHome ? 
@@ -24,7 +46,14 @@ class BlueBar extends Component {
 						<div class="container">
 							<div class="row">
 								<div class="col-md-7 center">
-									<input id="main-search" class="form-control" name="name" type="text" placeholder="جستجو در جاب‌اونجا" />
+									<input 
+										id="main-search" 
+										class="form-control" 
+										name="name" 
+										type="text" 
+										placeholder="جستجو در جاب‌اونجا"
+										onChange={this.handleSearchChange}
+									/>
 									<button type="button" class="btn search-btn">جستجو</button>
 								</div>
 							</div>
