@@ -37,3 +37,26 @@
 .desc-text{
     font-size: 15px;
 }
+
+.center{
+    margin:auto;
+}
+
+.search-btn{
+    color: white;
+    background-color: rgb(75, 172, 188);
+    z-index: 100;
+    margin-top: -74px;
+    margin-left: 4px;
+}
+
+#main-search{
+    height: 45px;
+    background-color: rgb(221,247,249);
+}
+
+#main-search::placeholder{
+    color:rgb(115, 206, 198);
+    font-size:12px;
+    font-weight: bold;
+}
