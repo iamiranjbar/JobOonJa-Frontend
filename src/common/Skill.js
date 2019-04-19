@@ -55,8 +55,8 @@ class Skill extends Component {
 
 		prepareBackground(){
 			return (this.props.userData.alterBackground) ?
-			"home-span-font home-font-color shadow-sm font rounded-top rounded-bottom ml-4"
-			: "span-font bg-white shadow-sm font rounded-top rounded-bottom ml-4"
+			"home-span-font home-font-color shadow-sm font rounded-top rounded-bottom mr-1"
+			: "span-font bg-white shadow-sm font rounded-top rounded-bottom mr-1"
 		}
 
     hoverOn(keyName){

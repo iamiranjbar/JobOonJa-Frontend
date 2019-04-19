@@ -88,10 +88,12 @@ class Project extends Component {
 	                </div>
 	            </div>
 	            <div className="row font req-alter req-dir">
-	                {this.state.loaded ? Object.keys(this.state.project.skills).map((keyName, i) => (
-						<Skill skillData={this.state.project.skills[keyName]}
-						userData={{id: '1', login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
-					)) : null}
+					<div className="ml-4 d-flex">
+						{this.state.loaded ? Object.keys(this.state.project.skills).map((keyName, i) => (
+							<Skill skillData={this.state.project.skills[keyName]}
+							userData={{id: '1', login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
+						)) : null}
+					</div>
 	            </div>
 	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: '1'}} updateProjectData={this.updateProjectData} ended={this.state.ended}/> : null}
 	        </div>
