@@ -20,17 +20,6 @@ class BlueBar extends Component {
 							طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
 						</div>
 					</div>
-					{/* <div className="container">
-						<div className="row col-md-6 mx-auto">
-							<form className="form col-md-12">
-								<input
-									placeholder="جستجو در جاب‌اونجا "
-									// value={this.state.query}
-									// onChange={this.handleInputChange}
-								/>
-							</form>
-						</div>
-					</div> */}
 					<form class="form" method="POST">
 						<div class="container">
 							<div class="row">
@@ -40,7 +29,7 @@ class BlueBar extends Component {
 								</div>
 							</div>
 						</div>
-						</form>
+					</form>
 	            </div> 
     		);
     }

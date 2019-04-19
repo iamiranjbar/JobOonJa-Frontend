@@ -56,9 +56,18 @@ class User extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
-                            {this.state.usersLoaded ?this.state.users.map( function(user) {
-                                return <UserCard userData={user}/>
-                            }): null}
+                            <div className="user-list">
+                                <div>
+                                    <form class="form" method="POST">
+                                        <input id="user-search" class="form-control" name="name" type="text" placeholder="جستجو نام کاربر" />
+                                    </form>
+                                </div>
+                                <div>
+                                    {this.state.usersLoaded ?this.state.users.map( function(user) {
+                                        return <UserCard userData={user}/>
+                                    }): null}
+                                </div>
+                            </div>
                         </div>
                         <div className="col-9">
                             <div className="projectsList">
