@@ -7,7 +7,8 @@ class ProjectCard extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			timerBadgeClass : "badge badge-blue font text-info ml-1 my-0 mr-1"
+			timerBadgeClass : "badge badge-blue font text-info ml-1 my-0 mr-1",
+			frameClass: "frame"
 		}
 		this.changeTimerBackground = this.changeTimerBackground.bind(this);
 	}
@@ -17,12 +18,15 @@ class ProjectCard extends Component {
 			this.setState({
 				timerBadgeClass: "badge badge-danger font text-info ml-1 my-0 mr-1"
 			})
+			this.setState({
+				frameClass: "grayframe"
+			})
 	}
 
     render() {
     	return (
             <React.Fragment>
-	        <div className="container frame shadow-sm">
+	        <div className={"container "+this.state.frameClass+" shadow-sm"}>
 	            <div className="row">
 	                <div className="col-2">
 	                    <img className="projectCard-image" src={this.props.projectData.imageUrl}></img>

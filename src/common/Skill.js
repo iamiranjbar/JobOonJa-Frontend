@@ -55,8 +55,8 @@ class Skill extends Component {
 
 		prepareBackground(){
 			return (this.props.userData.alterBackground) ?
-			"home-span-font home-font-color shadow-sm font rounded-top rounded-bottom mr-1"
-			: "span-font bg-white shadow-sm font rounded-top rounded-bottom mr-1"
+			"home-span-font home-font-color shadow-sm font rounded-top rounded-bottom"
+			: "span-font bg-white shadow-sm font rounded-top rounded-bottom"
 		}
 
     hoverOn(keyName){
@@ -114,7 +114,6 @@ class Skill extends Component {
     	return (
 				<div id={this.props.skillData.name} className="mx-1">
 					<div className={this.prepareBackground()}>
-						{this.props.skillData.name}
 						{this.props.userData.badgeEnable ? (
 									<span className={this.prepareSpan()}
 									onClick={() => this.handleClick(this.props.skillData.name)}
@@ -122,6 +121,7 @@ class Skill extends Component {
 									onMouseLeave={() => this.hoverOff()}>			
 								{this.prepareSpanText()}
 						</span>) : null}
+						{this.props.skillData.name}
 					</div>
 				</div>);
     }

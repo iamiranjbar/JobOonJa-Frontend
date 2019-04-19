@@ -5,8 +5,6 @@ class SendBid extends Component {
 	constructor(props){
         super(props);
 		this.state = {
-			project: this.props.project,
-			user: this.props.user,
 			amount: 0,
 			errorMsg: "",
             validAmount: false
@@ -44,9 +42,9 @@ class SendBid extends Component {
 	}
 
 	submitBid(){
-        console.log(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}`)
+        console.log(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}`)
         const axios = require('axios');
-		axios.post(`http://localhost:8080/project/${this.state.project.id}/bid/${this.state.amount}` ,
+		axios.post(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}` ,
             {
                 "Access-Control-Allow-Origin" : "*"
             })
