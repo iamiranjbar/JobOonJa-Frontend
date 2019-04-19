@@ -9,9 +9,9 @@ class Login extends Component {
         super(props);
         this.state ={
             username : "",
-            usernameClassName: "form-group has-warning",
+            usernameClassName: "form-control ltr-dir",
             password : "",
-            passwordClassName : "form-group has-warning",
+            passwordClassName : "form-control ltr-dir",
             validUsername:false,
             validPassword:false,
         };
@@ -26,12 +26,12 @@ class Login extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                usernameClassName : "form-group has-warning",
+                usernameClassName : "form-control ltr-dir error",
                 validUsername:false
             })
         }else {
             this.setState({
-                usernameClassName:"form-group has-success",
+                usernameClassName:"form-control ltr-dir success",
                 validUsername: true
             })
         }
@@ -43,12 +43,12 @@ class Login extends Component {
         });
         if(event.target.value == ""){
             this.setState({
-                passwordClassName : "form-group has-warning",
+                passwordClassName : "form-control ltr-dir error",
                 validPassword:false
             })
         }else {
             this.setState({
-                passwordClassName:"form-group has-success",
+                passwordClassName:"form-control ltr-dir success",
                 validPassword: true 
             })
         }
@@ -114,13 +114,13 @@ class Login extends Component {
                                 <div className="panel-body">
                                     <div>
                                         <div>
-                                            <div className={this.state.usernameClassName}>
+                                            <div className="form-group has-success">
                                                 <label>Username</label>
-                                                <input className="form-control ltr-dir" name="username"   onChange={this.handleUsernameChange} placeholder="Username"/>
+                                                <input className={this.state.usernameClassName} name="username"   onChange={this.handleUsernameChange} placeholder="Username"/>
                                             </div>
-                                            <div className={this.state.passwordClassName}>
+                                            <div className="form-group">
                                                 <label>Password</label>
-                                                <input  className="form-control ltr-dir" name="password" onChange={this.handlePasswordChange} type="password" placeholder="Password"/>
+                                                <input  className={this.state.passwordClassName} name="password" onChange={this.handlePasswordChange} type="password" placeholder="Password"/>
                                             </div>
                                             <div className="form-group">
                                             <Button/>
