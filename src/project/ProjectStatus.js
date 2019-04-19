@@ -7,7 +7,6 @@ class ProjectStatus extends Component {
 	constructor(props){
         super(props);
 		this.state = {
-			project: this.props.project,
 			winnerName: "",
 			timeClass: "time-text"
 		}
@@ -23,8 +22,8 @@ class ProjectStatus extends Component {
     }
 
     findWinner() {
-    	if (this.state.project.winner != null) {
-    		this.setState({winnerName: this.state.project.winner.firstName + ' ' + this.state.project.winner.lastName})
+    	if (this.props.project.winner != null) {
+    		this.setState({winnerName: this.props.project.winner.firstName + ' ' + this.props.project.winner.lastName})
     	}
     }
 
@@ -34,11 +33,11 @@ class ProjectStatus extends Component {
         <React.Fragment>
         <li className={this.state.timeClass}>
             <span className="flaticon-deadline"></span>
-            <Timer seconds={this.state.project.deadline - Date.now()} brief={false} changeIcon={this.changeIcon}/>
+            <Timer seconds={this.props.project.deadline - Date.now()} brief={false} changeIcon={this.changeIcon}/>
         </li>
         <li className="budget-text">
             <span className="flaticon-money-bag"></span>
-            بودجه: {this.state.project.budget} تومان
+            بودجه: {this.props.project.budget} تومان
         </li>
         {this.state.winnerName != "" ?(
         <li class="winner-text">

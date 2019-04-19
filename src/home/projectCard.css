@@ -4,6 +4,12 @@
     border-radius: 3px;
 }
 
+.grayframe {
+    background-color: gray;
+    z-index: 100;
+    border-radius: 3px;
+}
+
 .frame:hover{
     box-shadow: 2px 3px 30px lightgrey;
 }
