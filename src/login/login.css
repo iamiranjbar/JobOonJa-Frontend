@@ -1,0 +1,11 @@
+.top-element {
+    padding-top: 70px;
+}
+
+.ltr-dir {
+    direction: ltr;
+}
+
+.main{
+    min-height: calc(100vh);
+}
