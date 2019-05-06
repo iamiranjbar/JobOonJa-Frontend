@@ -5,6 +5,7 @@ import Footer from '../common/Footer'
 import ProjectCard from './ProjectCard'
 import UserCard from './UserCard'
 import './home.css'
+const axios = require('axios'); 
 
 class User extends Component {
 	constructor(props){
@@ -12,16 +13,90 @@ class User extends Component {
         this.state = {
             projectsLoaded: false,
             usersLoaded: false,
-            searchText : "",
-			validSearch: false
+            userSearchText: "",
+            validUserSearch: false,
+            offset: 0,
+            limit: 5
         }
         this.fetchData = this.fetchData.bind(this);
-        this.handleSearchChange = this.handleSearchChange.bind(this);
+        this.handleUserSearchChange = this.handleUserSearchChange.bind(this);
+        this.handleUserSearch = this.handleUserSearch.bind(this);
+        this.getAllUsers = this.getAllUsers.bind(this);
+        this.handleProjectSearch = this.handleProjectSearch.bind(this);
+        this.getAllProjects = this.getAllProjects.bind(this);
+        this.showMore = this.showMore.bind(this);
     }
 
-    fetchData(){
-        const axios = require('axios'); 
-		axios.get(`http://localhost:8080/project`)
+    fetchData(){ 
+        this.getAllProjects();
+        this.getAllUsers();
+    }
+
+    componentDidMount() {
+		this.fetchData()
+    }
+
+    handleUserSearchChange(event){
+		this.setState({
+            userSearchText : event.target.value,
+            usersLoaded: false
+		});
+		if(event.target.value == ""){
+            this.setState({
+                validUserSearch:false
+            },()=>{this.getAllUsers();})
+        }else {
+            this.setState({
+                validUserSearch: true
+            },()=> {
+                this.handleUserSearch();
+            })
+        }
+    }
+
+    handleUserSearch(){
+        console.log(this.state.userSearchText)
+        axios.get(`http://localhost:8080/user/search/` + this.state.userSearchText)
+		.then(response => {
+			this.setState({ 
+                users : response.data,
+                usersLoaded: true
+            });
+		})
+		.catch(err => {
+			console.log(err)
+        })
+    }
+    
+    getAllUsers(){
+        axios.get(`http://localhost:8080/user`)
+		.then(response => {
+			this.setState({ 
+                users:response.data,
+                usersLoaded: true
+            });
+		})
+		.catch(err => {
+			console.log(err)
+        })
+    }
+
+    handleProjectSearch(searchField){
+        axios.get(`http://localhost:8080/project/search/` + searchField)
+		.then(response => {
+			this.setState({ 
+                projects : response.data,
+                projectsLoaded: true
+            });
+		})
+		.catch(err => {
+			console.log(err)
+        })
+    }
+
+    getAllProjects(){
+        console.log(this.state.limit)
+        axios.get(`http://localhost:8080/projects/` + this.state.limit)
 		.then(response => {
 			this.setState({ projects : response.data });
       		this.setState({projectsLoaded: true});
@@ -29,37 +104,17 @@ class User extends Component {
 		.catch(err => {
 			console.log(err)
         })
-        axios.get(`http://localhost:8080/user`)
-		.then(response => {
-			this.setState({ users : response.data });
-      		this.setState({usersLoaded: true});
-		})
-		.catch(err => {
-			console.log(err)
+    }
+
+    showMore(){
+        this.setState({
+            limit: this.state.limit + 5
+        },()=> {
+            this.getAllProjects();
         })
     }
 
-    componentDidMount() {
-		this.fetchData()
-    }
-
-    handleSearchChange(event){
-		this.setState({
-			searchText : event.target.value
-		});
-		if(event.target.value == ""){
-            this.setState({
-                validFirstname:false
-            })
-        }else {
-            this.setState({
-                validFirstname: true
-            })
-        }
-    }
-    
 	render() {
-        console.log(this.state.projects)
 	    return (
 	    	<React.Fragment>
 			<Header otherPages = {
@@ -70,27 +125,33 @@ class User extends Component {
             }/>
 	        <div className="white_bar">
 	        <main className="white_bar">
-	            <BlueBar notHome = {false}/>
+                <BlueBar 
+                    notHome = {false} 
+                    handleProjectSearch={(searchField)=>this.handleProjectSearch(searchField)}
+                    getAllProjects={()=>this.getAllProjects()}
+                />
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
                             <div className="user-list">
                                 <div>
-                                    <form class="form" method="POST">
+                                    <form class="form">
                                         <input 
                                             id="user-search" 
                                             class="form-control" 
                                             name="name" 
                                             type="text" 
                                             placeholder="جستجو نام کاربر" 
-                                            onChange={this.handleSearchChange}
+                                            onChange={this.handleUserSearchChange}
                                         />
                                     </form>
                                 </div>
                                 <div>
-                                    {this.state.usersLoaded ?this.state.users.map( function(user) {
-                                        return <UserCard userData={user}/>
-                                    }): null}
+                                    {this.state.usersLoaded ? 
+                                        this.state.users.map( function(user) {
+                                            return <UserCard userData={user}/>
+                                        })
+                                    : null}
                                 </div>
                             </div>
                         </div>
@@ -99,6 +160,7 @@ class User extends Component {
                                 {this.state.projectsLoaded ? this.state.projects.map( function(project) {
                                     return <ProjectCard projectData={project}/>
                                 }) : null}
+                                <button type="button" class="btn search-btn" onClick={this.showMore}>نمایش بیشتر</button>
                             </div>
                         </div>
                     </div>

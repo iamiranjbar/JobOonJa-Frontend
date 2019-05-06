@@ -61,23 +61,24 @@ class SendBid extends Component {
 	}
 
     prepareBidHtml(){
+		var that = this
     	if(this.props.project.bids != null && this.props.project.bids.find(
 				function(element) {
-					return element.user.id == this.props.user.id; 
+					return element.biddingUser == that.props.user.id
 				}))
     	{
     		return (
     			<React.Fragment>
-    			<div class="row col-auto already-bid font mr-1">
+    			<div className="row col-auto already-bid font mr-1">
     			<div>
-                    <span class="flaticon-check-mark tick"></span>
+                    <span className="flaticon-check-mark tick"></span>
                 </div>
-                <div class="row col-auto">
+                <div className="row col-auto">
                 شما قبلا پیشنهاد خود را ثبت کرده&zwnj;اید.
                 </div>
                 </div>
                 </React.Fragment>
-                )
+				)
     	}else if((Date.now() - this.props.project.deadline) > 0 || this.props.ended) {
     		return (
     			<React.Fragment>
@@ -93,7 +94,7 @@ class SendBid extends Component {
                 </div>
                 </React.Fragment>
                 )
-    	}else {
+    	} else {
     		return (
 		    	<React.Fragment>
 		    	<div className="row col-12 bid-title font">

@@ -29,16 +29,16 @@ class ProjectCard extends Component {
 	        <div className={"container "+this.state.frameClass+" shadow-sm"}>
 	            <div className="row">
 	                <div className="col-2">
-	                    <a href={"#/project/"+this.props.projectData.id}>
-							<img className="projectCard-image" src={this.props.projectData.imageUrl}></img>
-						</a>
+						<img className="projectCard-image" src={this.props.projectData.imageUrl}></img>
 	                </div>
 	                <div className="col-10">
 	                    <ul className="project-list-text font">
 	              			<li>
 								<div className="row">
 									<div className="project-name-text col-9">
-										{this.props.projectData.title}
+										<a href={"#/project/"+this.props.projectData.id}>
+											{this.props.projectData.title}
+										</a>
 									</div>
 									<div className="col-3">
 										<span className="badge badge-blue font text-info ml-1 my-0 mr-1">

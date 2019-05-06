@@ -10,22 +10,36 @@ class BlueBar extends Component {
 			validSearch: false
 		}
 
-		this.handleSearchChange = this.handleSearchChange.bind(this);
+		this.handleSearch = this.handleSearch.bind(this);
+		this.search = this.search.bind(this);
     }
 
-	handleSearchChange(event){
+	handleSearch(event){
 		this.setState({
 			searchText : event.target.value
 		});
 		if(event.target.value == ""){
             this.setState({
-                validFirstname:false
-            })
+				validSearch:false
+			})
+            // },()=>{this.props.handleProjectSearch(this.state.searchText)})
         }else {
             this.setState({
-                validFirstname: true
-            })
+				validSearch: true
+			})
+            // },()=>{this.props.getAllProjects()})
         }
+	}
+
+	search(){
+		console.log(">>>>>")
+		console.log(this.state.validSearch)
+		console.log(this.state.searchText)
+		console.log("<<<<<")
+		if (this.state.validSearch)
+			this.props.handleProjectSearch(this.state.searchText)
+		else
+			this.props.getAllProjects();
 	}
 
     render() {
@@ -42,7 +56,7 @@ class BlueBar extends Component {
 							طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
 						</div>
 					</div>
-					<form class="form" method="POST">
+					<form class="form">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-7 center">
@@ -52,9 +66,9 @@ class BlueBar extends Component {
 										name="name" 
 										type="text" 
 										placeholder="جستجو در جاب‌اونجا"
-										onChange={this.handleSearchChange}
+										onChange={this.handleSearch}
 									/>
-									<button type="button" class="btn search-btn">جستجو</button>
+									<button type="button" class="btn search-btn" onClick={this.search}>جستجو</button>
 								</div>
 							</div>
 						</div>
