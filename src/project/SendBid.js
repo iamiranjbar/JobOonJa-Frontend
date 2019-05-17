@@ -5,24 +5,20 @@ const axios = require('axios');
 class SendBid extends Component {
 	constructor(props){
         super(props);
-		this.state = {
+		var tok = localStorage.getItem("jobOonJaToken")
+        this.state = {
 			hasJWT: false,
 			token: "",
 			amount: 0,
 			errorMsg: "",
-            validAmount: false
+            validAmount: false,
+            hasJWT: (tok != null) ? true : false,
+            token: (tok != null) ? tok : ""
 		}
 		this.prepareBidHtml = this.prepareBidHtml.bind(this);
 		this.submitBid = this.submitBid.bind(this);
 		this.handleAmountChange = this.handleAmountChange.bind(this);
 		this.isNumeric = this.isNumeric.bind(this);
-		var tok = localStorage.getItem("jobOonJaToken")
-        if (tok != null){
-            this.setState({
-                hasJWT: true,
-                token: tok
-            })
-        }
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 

@@ -13,23 +13,19 @@ class Project extends Component {
 	constructor(props){
         super(props);
         const { match: { params } } = this.props;
+		var tok = localStorage.getItem("jobOonJaToken")
 		this.state = {
 			hasJWT: false,
 			token: "",
 			loaded: false,
 			ended: false,
-			id: params.projectId
+			id: params.projectId,
+			hasJWT: (tok != null) ? true : false,
+            token: (tok != null) ? tok : ""
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateState = this.updateState.bind(this);
 		this.updateProjectData = this.updateProjectData.bind(this);
-		var tok = localStorage.getItem("jobOonJaToken")
-        if (tok != null){
-            this.setState({
-                hasJWT: true,
-                token: tok
-            })
-        }
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 

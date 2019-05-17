@@ -5,19 +5,15 @@ const axios = require('axios');
 class AddSkill extends Component {
 	constructor(props){
 		super(props);
-		this.state = {
+		var tok = localStorage.getItem("jobOonJaToken")
+        this.state = {
 			hasJWT: false,
-			token: ""
+			token: "",
+            hasJWT: (tok != null) ? true : false,
+            token: (tok != null) ? tok : ""
 		}
         console.log(this.props.skillsData)
 		this.onClickHandler = this.onClickHandler.bind(this);
-		var tok = localStorage.getItem("jobOonJaToken")
-        if (tok != null){
-            this.setState({
-                hasJWT: true,
-                token: tok
-            })
-        }
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 

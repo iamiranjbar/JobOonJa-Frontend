@@ -42,7 +42,7 @@ class ProjectStatus extends Component {
         {this.state.winnerName != "" ?(
         <li class="winner-text">
             <span class="flaticon-check-mark"></span>
-            برنده: وحید محمدی
+            برنده: {this.state.winnerName}
         </li>
         ):(null)}
         </React.Fragment>

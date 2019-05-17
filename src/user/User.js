@@ -11,23 +11,19 @@ class User extends Component {
 	constructor(props){
         super(props);
         const { match: { params } } = this.props;
+        var tok = localStorage.getItem("jobOonJaToken")
 		this.state = {
 			hasJWT: false,
 			token: "",
 			loaded: false,
 			login: false, 
-			id: params.userId
+			id: params.userId,
+			hasJWT: (tok != null) ? true : false,
+            token: (tok != null) ? tok : ""
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateUserData = this.updateUserData.bind(this);
 		this.fetchSkills = this.fetchSkills.bind(this);
-		var tok = localStorage.getItem("jobOonJaToken")
-        if (tok != null){
-            this.setState({
-                hasJWT: true,
-                token: tok
-            })
-        }
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
