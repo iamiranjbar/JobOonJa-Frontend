@@ -5,6 +5,8 @@ import './user_profile.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
 import AddSkill from './AddSkill'
+import { Redirect } from 'react-router-dom'
+
 const axios = require('axios'); 
 
 class User extends Component {
@@ -16,7 +18,8 @@ class User extends Component {
 			hasJWT: false,
 			token: "",
 			loaded: false,
-			login: false, 
+			login: false,
+			fetchError: false, 
 			id: params.userId,
 			hasJWT: (tok != null) ? true : false,
             token: (tok != null) ? tok : ""
@@ -24,6 +27,7 @@ class User extends Component {
         this.fetchData = this.fetchData.bind(this);
         this.updateUserData = this.updateUserData.bind(this);
 		this.fetchSkills = this.fetchSkills.bind(this);
+		this.renderRedirect = this.renderRedirect.bind(this);
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
@@ -40,6 +44,7 @@ class User extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+			this.setState({fetchError: true})
 		})
 		this.fetchSkills();
     }
@@ -65,9 +70,18 @@ class User extends Component {
 		console.log(this.state.user)
     }
 
+    renderRedirect(){
+    	console.log("Redirect")
+        if (this.state.fetchError == true)
+            return  <Redirect to="/login" />;
+        else
+        	return null;
+    }
+
 	render() {
 	    return (
 	    	<React.Fragment>
+	    	{this.renderRedirect()}
 			<Header otherPages = {{
 				"حساب کاربری" : "#/user/1",
 				"خروج" : "#/logout"

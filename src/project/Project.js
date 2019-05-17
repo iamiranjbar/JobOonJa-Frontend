@@ -7,6 +7,8 @@ import Header from '../common/Header'
 import ProjectStatus from './ProjectStatus'
 import './project_bid.css'
 import './flaticon.css'
+import { Redirect } from 'react-router-dom'
+
 const axios = require('axios'); 
 
 class Project extends Component {
@@ -19,6 +21,7 @@ class Project extends Component {
 			token: "",
 			loaded: false,
 			ended: false,
+			fetchError: false,
 			id: params.projectId,
 			hasJWT: (tok != null) ? true : false,
             token: (tok != null) ? tok : ""
@@ -26,6 +29,7 @@ class Project extends Component {
         this.fetchData = this.fetchData.bind(this);
         this.updateState = this.updateState.bind(this);
 		this.updateProjectData = this.updateProjectData.bind(this);
+		this.renderRedirect = this.renderRedirect.bind(this);
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
@@ -37,6 +41,7 @@ class Project extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+			this.setState({fetchError: true});
 		})
     }
 
@@ -54,9 +59,17 @@ class Project extends Component {
 		this.fetchData()
     }
 
+    renderRedirect(){
+        if (this.state.fetchError == true)
+            return  <Redirect to="/login" />;
+        else
+        	return null
+    }
+
 	render() {
 	    return (
 	    	<React.Fragment>
+	    	{this.renderRedirect()}
 			<Header otherPages = {{
 				"حساب کاربری" : "#/user/1",
 				"خروج" : "#/logout"

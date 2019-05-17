@@ -5,6 +5,8 @@ import Footer from '../common/Footer'
 import ProjectCard from './ProjectCard'
 import UserCard from './UserCard'
 import './home.css'
+import { Redirect } from 'react-router-dom'
+
 const axios = require('axios'); 
 
 class User extends Component {
@@ -17,6 +19,7 @@ class User extends Component {
             projectsLoaded: false,
             usersLoaded: false,
             userSearchText: "",
+            fetchError: false,
             validUserSearch: false,
             offset: 0,
             limit: 5
@@ -28,6 +31,7 @@ class User extends Component {
         this.handleProjectSearch = this.handleProjectSearch.bind(this);
         this.getAllProjects = this.getAllProjects.bind(this);
         this.showMore = this.showMore.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
         axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
@@ -68,6 +72,7 @@ class User extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+            this.setState({fetchError: true});
         })
     }
     
@@ -81,6 +86,7 @@ class User extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+            this.setState({fetchError: true});
         })
     }
 
@@ -94,6 +100,7 @@ class User extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+            this.setState({fetchError: true});
         })
     }
 
@@ -106,6 +113,7 @@ class User extends Component {
 		})
 		.catch(err => {
 			console.log(err)
+            this.setState({fetchError: true});
         })
     }
 
@@ -117,9 +125,17 @@ class User extends Component {
         })
     }
 
+    renderRedirect(){
+        if (this.state.fetchError == true)
+            return  <Redirect to="login" />;
+        else
+            return null
+    }
+
 	render() {
 	    return (
 	    	<React.Fragment>
+            {this.renderRedirect()}
 			<Header otherPages = {
                 {
                     "حساب کاربری" : "#/user/1",
