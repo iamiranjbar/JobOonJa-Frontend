@@ -6,6 +6,7 @@ import User from './user/User'
 import Project from './project/Project'
 import Home from './home/Home'
 import Signup from './signup/Signup'
+import Logout from './login/logout'
 
 class App extends Component {
     constructor(props){
@@ -17,6 +18,7 @@ class App extends Component {
             <Router history = {createHashHistory()}>
                 <Route exact path="/Login" component={Login}/>
                 <Route exact path="/Signup" component={Signup}/>
+                <Route exact path="/logout" component={Logout}/>
                 <Route exact path="/user/:userId" component={User}/>
                 <Route exact path="/project/:projectId" component={Project}/>
                 <Route exact path="/home" component={Home}/>

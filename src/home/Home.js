@@ -10,7 +10,10 @@ const axios = require('axios');
 class User extends Component {
 	constructor(props){
         super(props);
+        var tok = localStorage.getItem("jobOonJaToken")
         this.state = {
+            hasJWT: tok!=null,
+            token: tok,
             projectsLoaded: false,
             usersLoaded: false,
             userSearchText: "",
@@ -25,6 +28,7 @@ class User extends Component {
         this.handleProjectSearch = this.handleProjectSearch.bind(this);
         this.getAllProjects = this.getAllProjects.bind(this);
         this.showMore = this.showMore.bind(this);
+        axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
     fetchData(){ 
@@ -55,7 +59,6 @@ class User extends Component {
     }
 
     handleUserSearch(){
-        console.log(this.state.userSearchText)
         axios.get(`http://localhost:8080/user/search/` + this.state.userSearchText)
 		.then(response => {
 			this.setState({ 
@@ -120,7 +123,7 @@ class User extends Component {
 			<Header otherPages = {
                 {
                     "حساب کاربری" : "#/user/1",
-				    "خروج" : "#"
+				    "خروج" : "#/logout"
                 }
             }/>
 	        <div className="white_bar">

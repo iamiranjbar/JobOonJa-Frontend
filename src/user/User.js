@@ -5,23 +5,33 @@ import './user_profile.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
 import AddSkill from './AddSkill'
+const axios = require('axios'); 
 
 class User extends Component {
 	constructor(props){
         super(props);
         const { match: { params } } = this.props;
 		this.state = {
+			hasJWT: false,
+			token: "",
 			loaded: false,
 			login: false, 
 			id: params.userId
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateUserData = this.updateUserData.bind(this);
-        this.fetchSkills = this.fetchSkills.bind(this);
+		this.fetchSkills = this.fetchSkills.bind(this);
+		var tok = localStorage.getItem("jobOonJaToken")
+        if (tok != null){
+            this.setState({
+                hasJWT: true,
+                token: tok
+            })
+        }
+        axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
     fetchData(){
-        const axios = require('axios'); 
 		axios.get(`http://localhost:8080/user/${this.state.id}`)
 		.then(response => {
 			// console.log(response)
@@ -39,7 +49,6 @@ class User extends Component {
     }
 
     fetchSkills() {
-    	const axios = require('axios'); 
     	axios.get(`http://localhost:8080/skill/${this.state.id}`)
 		.then(response => {
 			this.setState({ skills : response.data });
@@ -65,7 +74,7 @@ class User extends Component {
 	    	<React.Fragment>
 			<Header otherPages = {{
 				"حساب کاربری" : "#/user/1",
-				"خروج" : "#"
+				"خروج" : "#/logout"
 			}}/>
 	        <div className="white_bar">
 	        <main className="white_bar">

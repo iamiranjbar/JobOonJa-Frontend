@@ -7,23 +7,33 @@ import Header from '../common/Header'
 import ProjectStatus from './ProjectStatus'
 import './project_bid.css'
 import './flaticon.css'
+const axios = require('axios'); 
 
 class Project extends Component {
 	constructor(props){
         super(props);
         const { match: { params } } = this.props;
 		this.state = {
+			hasJWT: false,
+			token: "",
 			loaded: false,
 			ended: false,
 			id: params.projectId
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateState = this.updateState.bind(this);
-        this.updateProjectData = this.updateProjectData.bind(this);
+		this.updateProjectData = this.updateProjectData.bind(this);
+		var tok = localStorage.getItem("jobOonJaToken")
+        if (tok != null){
+            this.setState({
+                hasJWT: true,
+                token: tok
+            })
+        }
+        axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
     fetchData(){
-        const axios = require('axios'); 
 		axios.get(`http://localhost:8080/project/${this.state.id}`)
 		.then(response => {
 			this.setState({ project : response.data });
@@ -53,7 +63,7 @@ class Project extends Component {
 	    	<React.Fragment>
 			<Header otherPages = {{
 				"حساب کاربری" : "#/user/1",
-				"خروج" : "#"
+				"خروج" : "#/logout"
 			}}/>
 	        <div className="gray-bar">
 	        <main>

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import './login.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
     constructor(props){
@@ -18,6 +19,7 @@ class Login extends Component {
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
     }
     
     handleUsernameChange(event){
@@ -56,21 +58,34 @@ class Login extends Component {
 
     submitForm() {
         const axios = require('axios');
-        axios.post('/user', {
-            username: this.state.username,
-            lastName: this.state.password
+        axios.post("http://localhost:8080/login", {
+            "Access-Control-Allow-Origin" : "*",
+        'Access-Control-Request-Headers': '*'}, {
+            params:{
+                username: this.state.username,
+                password: this.state.password
+            }
           })
           .then(function (response) {
-            console.log(response);
+            console.log(response.data)
+            localStorage.setItem("jobOonJaToken", response.data);
+            console.log(localStorage.getItem("jobOonJaToken"))
           })
           .catch(function (error) {
             console.log(error);
           });
     }
 
+    renderRedirect(){
+        if (localStorage.getItem("jobOonJaToken")!=null)
+            return  <Redirect to="home" />;
+    }
+
     render() {
         const Button = withRouter(({ history}) => (
-            <button className="btn btn-lg btn-info btn-block" disabled={!this.state.validUsername || !this.state.validPassword} onClick={()=> this.submitForm(history)}>ثبت</button>
+            <button className="btn btn-lg btn-info btn-block" 
+            disabled={!this.state.validUsername || !this.state.validPassword} 
+            onClick={()=> this.submitForm()}>ثبت</button>
         ));
 
         return (
@@ -81,30 +96,7 @@ class Login extends Component {
                     }
                 }/>
                 <div className="main">
-                    {/* <div id="demo" className="carousel slide slideshow center-fit" data-ride="carousel">
-                        <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
-                        </ul>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img className="image" src={require("../common/755-11.jpg")} alt="ssh1"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="image" src={require("../common/992-11.jpg")} alt="ssh2"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="image" src={require("../common/2304-11.jpg")} alt="ssh3"/>
-                            </div>
-                        </div>
-                        <a className="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span className="carousel-control-prev-icon"></span>
-                        </a>
-                        <a className="carousel-control-next" href="#demo" data-slide="next">
-                            <span className="carousel-control-next-icon"></span>
-                        </a>
-                    </div>  */}
+                    {this.renderRedirect()}
                     <div id="page-wrapper" className="upper-form">
                         <div className="row">
                             <div className="panel col-md-4 mx-auto top-element">

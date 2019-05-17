@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import './project_bid.css'
-import Axios from 'axios';
+const axios = require('axios');
+
 class SendBid extends Component {
 	constructor(props){
         super(props);
 		this.state = {
+			hasJWT: false,
+			token: "",
 			amount: 0,
 			errorMsg: "",
             validAmount: false
@@ -12,7 +15,15 @@ class SendBid extends Component {
 		this.prepareBidHtml = this.prepareBidHtml.bind(this);
 		this.submitBid = this.submitBid.bind(this);
 		this.handleAmountChange = this.handleAmountChange.bind(this);
-        this.isNumeric = this.isNumeric.bind(this);
+		this.isNumeric = this.isNumeric.bind(this);
+		var tok = localStorage.getItem("jobOonJaToken")
+        if (tok != null){
+            this.setState({
+                hasJWT: true,
+                token: tok
+            })
+        }
+        axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
     isNumeric(num){
@@ -43,7 +54,6 @@ class SendBid extends Component {
 
 	submitBid(){
         console.log(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}`)
-        const axios = require('axios');
 		axios.post(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}` ,
             {
                 "Access-Control-Allow-Origin" : "*"

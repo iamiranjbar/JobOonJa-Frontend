@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import './signup.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
+import { Redirect } from 'react-router-dom'
 
 const axios = require('axios');
 // const bcrypt = require('bcrypt');
@@ -40,6 +41,7 @@ class Signup extends Component {
         this.handleProPicChange = this.handleProPicChange.bind(this);
         this.handleBioChange = this.handleBioChange.bind(this);
         this.submitForm = this.submitForm.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
     }
     
     handleFirstnameChange(event){
@@ -105,7 +107,10 @@ class Signup extends Component {
                 validUsername: true
             })
         })
-        
+        .catch(err =>{
+            console.log("hello");
+            console.log(err)
+        })
     }
 
     handlePasswordChange(event){
@@ -193,7 +198,8 @@ class Signup extends Component {
     }
 
     submitForm() {  
-        axios.post('http://localhost:8080/signup', null , {
+        axios.post('http://localhost:8080/signup', 
+        {
             params: {
                 firstName: this.state.firstname,
                 lastName: this.state.lastname,
@@ -203,13 +209,18 @@ class Signup extends Component {
                 imageLink: this.state.proPic,
                 bio: this.state.bio
             }
-          })
+        })
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
           });
+    }
+
+    renderRedirect(){
+        if (localStorage.getItem("jobOonJaToken")!=null)
+            return  <Redirect to="home" />;
     }
 
     render() {
@@ -227,6 +238,7 @@ class Signup extends Component {
                         "ورود" : "#/login"
                     }
                 }/>
+                {this.renderRedirect()}
                 <div className="shadow-sm centered-form center-block">
                     <div className="container form-con col-md-7 col-md-offset-3">
                     <form className="form-horizontal font" id="signup">

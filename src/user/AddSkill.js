@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import './user_profile.css'
+const axios = require('axios'); 
 
 class AddSkill extends Component {
 	constructor(props){
-        super(props);
+		super(props);
+		this.state = {
+			hasJWT: false,
+			token: ""
+		}
         console.log(this.props.skillsData)
-        this.onClickHandler = this.onClickHandler.bind(this);
+		this.onClickHandler = this.onClickHandler.bind(this);
+		var tok = localStorage.getItem("jobOonJaToken")
+        if (tok != null){
+            this.setState({
+                hasJWT: true,
+                token: tok
+            })
+        }
+        axios.defaults.headers.common = {'authorization': `Bearer ${this.state.token}`}
     }
 
     onClickHandler() {
@@ -14,7 +27,6 @@ class AddSkill extends Component {
     		if (sel.value === '1') {
     			return
     		}
-	 		const axios = require('axios'); 
 			axios.put(`http://localhost:8080/skill/${this.props.userId}/${sel.value}`)
 			.then(response => {
 				this.props.updateUserData(response.data)
