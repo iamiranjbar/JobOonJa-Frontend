@@ -67,9 +67,10 @@ class Login extends Component {
             }
           })
           .then(function (response) {
-            console.log(response.data)
+            // console.log(response.data)
             localStorage.setItem("jobOonJaToken", response.data);
-            console.log(localStorage.getItem("jobOonJaToken"))
+            window.location.reload();
+            // console.log(localStorage.getItem("jobOonJaToken"))
           })
           .catch(function (error) {
             console.log(error);

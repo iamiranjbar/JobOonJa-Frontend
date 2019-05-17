@@ -6,7 +6,7 @@ import Footer from '../common/Footer'
 import { Redirect } from 'react-router-dom'
 
 const axios = require('axios');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 class Signup extends Component {
     constructor(props){
@@ -30,7 +30,8 @@ class Signup extends Component {
             validLastname:false,
             validUsername:false,
             validPassword:false,
-            validJobTitle:false
+            validJobTitle:false,
+            hashPass: ""
         };
         this.handleFirstnameChange = this.handleFirstnameChange.bind(this);
         this.handleLastnameChange = this.handleLastnameChange.bind(this);
@@ -114,9 +115,10 @@ class Signup extends Component {
     }
 
     handlePasswordChange(event){
-        // var hash = bcrypt.hashSync(event.target.value, 10);
+        var hash = bcrypt.hashSync(event.target.value, 10);
         this.setState({
-            password : event.target.value
+            password : event.target.value,
+            hashPass: hash
         });
         if(event.target.value == ""){
             this.setState({
@@ -136,14 +138,13 @@ class Signup extends Component {
                 this.setState({
                     passwordClassName:"form-control input-md success",
                     passwordRepeatClassName:"form-control input-md success",
-                    validPassword: true 
+                    validPassword: true
                 })
             }
         }
     }
 
     handlePasswordRepeatChange(event){
-        // var hash = bcrypt.hashSync(event.target.value, 10);
         this.setState({
             passwordRepeat : event.target.value
         });
@@ -197,14 +198,18 @@ class Signup extends Component {
         });
     }
 
-    submitForm() {  
+    submitForm() { 
         axios.post('http://localhost:8080/signup', 
+        {
+            "Access-Control-Allow-Origin" : "*",
+            'Access-Control-Request-Headers': '*'
+        },
         {
             params: {
                 firstName: this.state.firstname,
                 lastName: this.state.lastname,
                 username: this.state.username,
-                password: this.state.password,
+                password: this.state.hashPass,
                 title: this.state.jobTitle,
                 imageLink: this.state.proPic,
                 bio: this.state.bio
