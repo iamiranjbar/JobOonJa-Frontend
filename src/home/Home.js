@@ -22,7 +22,8 @@ class User extends Component {
             fetchError: false,
             validUserSearch: false,
             offset: 0,
-            limit: 5
+            limit: 5,
+            userId: localStorage.getItem("jobOonJaUserId")
         }
         this.fetchData = this.fetchData.bind(this);
         this.handleUserSearchChange = this.handleUserSearchChange.bind(this);
@@ -138,7 +139,7 @@ class User extends Component {
             {this.renderRedirect()}
 			<Header otherPages = {
                 {
-                    "حساب کاربری" : "#/user/1",
+                    "حساب کاربری" : "#/user/" + this.state.userId,
 				    "خروج" : "#/logout"
                 }
             }/>

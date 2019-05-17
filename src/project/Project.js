@@ -24,7 +24,8 @@ class Project extends Component {
 			fetchError: false,
 			id: params.projectId,
 			hasJWT: (tok != null) ? true : false,
-            token: (tok != null) ? tok : ""
+			token: (tok != null) ? tok : "",
+			userId: localStorage.getItem("jobOonJaUserId")
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateState = this.updateState.bind(this);
@@ -71,7 +72,7 @@ class Project extends Component {
 	    	<React.Fragment>
 	    	{this.renderRedirect()}
 			<Header otherPages = {{
-				"حساب کاربری" : "#/user/1",
+				"حساب کاربری" : "#/user/" + this.state.userId,
 				"خروج" : "#/logout"
 			}}/>
 	        <div className="gray-bar">
@@ -110,11 +111,11 @@ class Project extends Component {
 					<div className="ml-4 d-flex">
 						{this.state.loaded ? Object.keys(this.state.project.skills).map((keyName, i) => (
 							<Skill skillData={this.state.project.skills[keyName]}
-							userData={{id: '1', login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
+							userData={{id: this.state.userId, login: true, hoverEnable: false, badgeEnable: true, alterBackground: false}}/>
 						)) : null}
 					</div>
 	            </div>
-	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: '1'}} updateProjectData={this.updateProjectData} ended={this.state.ended}/> : null}
+	            {this.state.loaded ? <SendBid project={this.state.project} user={{id: this.state.userId}} updateProjectData={this.updateProjectData} ended={this.state.ended}/> : null}
 	        </div>
 	    </main>
         </div>

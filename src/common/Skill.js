@@ -21,8 +21,9 @@ class Skill extends Component {
     }
 
     prepareSpanText() {
-    	var spanText = "";
-		if (this.props.userData.id  === "1" && this.props.userData.login) {
+		var spanText = "";
+		var userId = localStorage.getItem("jobOonJaUserId");
+		if (this.props.userData.id  == userId && this.props.userData.login) {
 			spanText = this.props.skillData.point
 			if (this.state.hover.enable)
 				spanText = "-"
@@ -37,7 +38,8 @@ class Skill extends Component {
 
     prepareSpan() {
 			var spanClass = "";
-			if (this.props.userData.id  === "1" && this.props.userData.login) {
+			var userId = localStorage.getItem("jobOonJaUserId");
+			if (this.props.userData.id  == userId && this.props.userData.login) {
 				spanClass = "badge badge-blue font text-info ml-1 my-0 mr-1"
 				if (this.state.hover.enable)
 					spanClass = "badge badge-danger font ml-1 my-0 mr-1"
@@ -45,7 +47,7 @@ class Skill extends Component {
 				spanClass = "badge badge-blue font text-info ml-1 my-0 mr-1"
 				if (this.props.skillData.endorsers.find(
 					function(element) {
-						return element === '1'; // 1 is login user 
+						return element == userId;
 					}) || this.state.hover.enable){
 					spanClass = "badge badge-success font ml-1 my-0 mr-1"
 					}
@@ -60,11 +62,12 @@ class Skill extends Component {
 		}
 
     hoverOn(keyName){
+			var userId = localStorage.getItem("jobOonJaUserId");
     	if(!this.state.userData.hoverEnable)
     		return	
     	var endorsed = this.props.skillData.endorsers.find(
 						function(element) {
-							return element == '1'; // 1 is login user 
+							return element == userId;
 						})
 		
     	this.setState({

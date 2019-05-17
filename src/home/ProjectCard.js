@@ -8,7 +8,8 @@ class ProjectCard extends Component {
 		super(props);
 		this.state = {
 			timerBadgeClass : "badge badge-blue font text-info ml-1 my-0 mr-1",
-			frameClass: "frame"
+			frameClass: "frame",
+			userId: localStorage.getItem("jobOonJaUserId")
 		}
 		this.changeTimerBackground = this.changeTimerBackground.bind(this);
 	}
@@ -64,7 +65,8 @@ class ProjectCard extends Component {
 										<div className = "d-flex">
 											{Object.keys(this.props.projectData.skills).map((keyName, i) => (
 												<Skill skillData={this.props.projectData.skills[keyName]}
-												userData={{id: '1', login: true, hoverEnable: false, badgeEnable: false, alterBackground: true}}/>
+												userData={{id: this.state.userId, login: true, hoverEnable: false, 
+													badgeEnable: false, alterBackground: true}}/>
 											))}
 										</div>
 									</div>

@@ -22,7 +22,8 @@ class User extends Component {
 			fetchError: false, 
 			id: params.userId,
 			hasJWT: (tok != null) ? true : false,
-            token: (tok != null) ? tok : ""
+			token: (tok != null) ? tok : "",
+			userId: localStorage.getItem("jobOonJaUserId")
 		}
         this.fetchData = this.fetchData.bind(this);
         this.updateUserData = this.updateUserData.bind(this);
@@ -37,7 +38,7 @@ class User extends Component {
 			// console.log(response)
 			this.setState({ user : response.data });
       		this.setState({loaded: true});
-      		if(this.state.id === '1'){
+      		if(this.state.id == this.state.userId){
 	        	this.setState({login: true})
 	        }
 	        // console.log(this.state)
@@ -83,7 +84,7 @@ class User extends Component {
 	    	<React.Fragment>
 	    	{this.renderRedirect()}
 			<Header otherPages = {{
-				"حساب کاربری" : "#/user/1",
+				"حساب کاربری" : "#/user/"+this.state.userId,
 				"خروج" : "#/logout"
 			}}/>
 	        <div className="white_bar">
