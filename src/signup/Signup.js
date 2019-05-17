@@ -4,6 +4,9 @@ import './signup.css'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
 
+const axios = require('axios');
+// const bcrypt = require('bcrypt');
+
 class Signup extends Component {
     constructor(props){
         super(props);
@@ -88,9 +91,25 @@ class Signup extends Component {
                 validUsername: true
             })
         }
+        axios.get(`http://localhost:8080/validate/${event.target.value}`)
+        .then(response => {
+            console.log(response.data)
+            if (response.data)
+                this.setState({
+                    usernameClassName:"form-control input-md error",
+                    validUsername: false
+                })
+            else
+            this.setState({
+                usernameClassName:"form-control input-md success",
+                validUsername: true
+            })
+        })
+        
     }
 
     handlePasswordChange(event){
+        // var hash = bcrypt.hashSync(event.target.value, 10);
         this.setState({
             password : event.target.value
         });
@@ -119,6 +138,7 @@ class Signup extends Component {
     }
 
     handlePasswordRepeatChange(event){
+        // var hash = bcrypt.hashSync(event.target.value, 10);
         this.setState({
             passwordRepeat : event.target.value
         });
@@ -172,11 +192,17 @@ class Signup extends Component {
         });
     }
 
-    submitForm() {
-        const axios = require('axios');
-        axios.put('/user', {
-            username: this.state.username,
-            lastName: this.state.password
+    submitForm() {  
+        axios.post('http://localhost:8080/signup', null , {
+            params: {
+                firstName: this.state.firstname,
+                lastName: this.state.lastname,
+                username: this.state.username,
+                password: this.state.password,
+                title: this.state.jobTitle,
+                imageLink: this.state.proPic,
+                bio: this.state.bio
+            }
           })
           .then(function (response) {
             console.log(response);
@@ -191,7 +217,7 @@ class Signup extends Component {
             <button className="btn btn-lg btn-info btn-block" 
                     disabled={!this.state.validUsername || !this.state.validPassword
                         || !this.state.validFirstname || !this.state.validLastname || !this.state.jobTitle} 
-                    onClick={()=> this.submitForm(history)}>ثبت</button>
+                    onClick={()=> this.submitForm()}>ثبت</button>
         ));
 
         return (
