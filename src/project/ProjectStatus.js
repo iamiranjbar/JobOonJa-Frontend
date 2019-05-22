@@ -11,7 +11,7 @@ class ProjectStatus extends Component {
 			timeClass: "time-text"
 		}
 		this.changeIcon = this.changeIcon.bind(this);
-		this.findWinner = this.findWinner.bind(this);
+        this.findWinner = this.findWinner.bind(this);
     }
 
     changeIcon(ended) {
@@ -22,13 +22,17 @@ class ProjectStatus extends Component {
     }
 
     findWinner() {
+        console.log(this.props.project.winner)
     	if (this.props.project.winner != null) {
     		this.setState({winnerName: this.props.project.winner.firstName + ' ' + this.props.project.winner.lastName})
     	}
     }
 
+    componentDidMount(){
+        this.findWinner()
+    }
+
     render() {
-    	this.findWinner();
         return (
         <React.Fragment>
         <li className={this.state.timeClass}>
