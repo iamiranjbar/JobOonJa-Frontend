@@ -198,12 +198,10 @@ class Signup extends Component {
         });
     }
 
-    submitForm() { 
-        axios.post('http://localhost:8080/signup', 
-        {
-            "Access-Control-Allow-Origin" : "*",
-            'Access-Control-Request-Headers': '*'
-        },
+    submitForm(event) {
+        event.preventDefault()
+        console.log("*************<<<<<<<<<")
+        axios.post('http://localhost:8080/signup', null,
         {
             params: {
                 firstName: this.state.firstname,
@@ -230,10 +228,10 @@ class Signup extends Component {
 
     render() {
         const Button = withRouter(({ history}) => (
-            <button className="btn btn-lg btn-info btn-block" 
+            <button className="btn btn-lg btn-info btn-block" type="submit"
                     disabled={!this.state.validUsername || !this.state.validPassword
                         || !this.state.validFirstname || !this.state.validLastname || !this.state.jobTitle} 
-                    onClick={()=> this.submitForm()}>ثبت</button>
+                    >ثبت</button>
         ));
 
         return (
@@ -246,7 +244,7 @@ class Signup extends Component {
                 {this.renderRedirect()}
                 <div className="shadow-sm centered-form center-block">
                     <div className="container form-con col-md-7 col-md-offset-3">
-                    <form className="form-horizontal font" id="signup">
+                    <form className="form-horizontal font" id="signup" onSubmit={($event) => this.submitForm($event)}>
                     <fieldset>
                     <legend className="text-center">ثبت نام</legend>
                     <div className="d-flex">
