@@ -96,7 +96,7 @@ class Skill extends Component {
     	if(this.state.hover.endorsed) {
     		return
     	} else if(this.props.userData.login){
-			axios.delete(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}`,
+			axios.delete(`http://localhost:8080/IERIA/skill/${this.props.userData.id}/${keyName}`,
 			{
 				"Access-Control-Allow-Origin" : "*"
 			})
@@ -105,7 +105,7 @@ class Skill extends Component {
 				  this.props.updateUserData(response.data)
 	    	}).catch(error => this.setState({ error, loaded: true }));
     	} else {
-			axios.post(`http://localhost:8080/skill/${this.props.userData.id}/${keyName}/endorse` ,
+			axios.post(`http://localhost:8080/IERIA/skill/${this.props.userData.id}/${keyName}/endorse` ,
 			{
 				"Access-Control-Allow-Origin" : "*"
 			})

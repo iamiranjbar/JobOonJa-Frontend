@@ -49,8 +49,8 @@ class SendBid extends Component {
 	}
 
 	submitBid(){
-        console.log(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}`)
-		axios.post(`http://localhost:8080/project/${this.props.project.id}/bid/${this.state.amount}` ,
+        console.log(`http://localhost:8080/IERIA/project/${this.props.project.id}/bid/${this.state.amount}`)
+		axios.post(`http://localhost:8080/IERIA/project/${this.props.project.id}/bid/${this.state.amount}` ,
             {
                 "Access-Control-Allow-Origin" : "*"
             })

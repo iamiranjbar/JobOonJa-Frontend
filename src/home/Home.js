@@ -64,7 +64,7 @@ class User extends Component {
     }
 
     handleUserSearch(){
-        axios.get(`http://localhost:8080/user/search/` + this.state.userSearchText)
+        axios.get(`http://localhost:8080/IERIA/user/search/` + this.state.userSearchText)
 		.then(response => {
 			this.setState({ 
                 users : response.data,
@@ -78,7 +78,7 @@ class User extends Component {
     }
     
     getAllUsers(){
-        axios.get(`http://localhost:8080/user`)
+        axios.get(`http://localhost:8080/IERIA/user`)
 		.then(response => {
 			this.setState({ 
                 users:response.data,
@@ -92,7 +92,7 @@ class User extends Component {
     }
 
     handleProjectSearch(searchField){
-        axios.get(`http://localhost:8080/project/search/` + searchField)
+        axios.get(`http://localhost:8080/IERIA/project/search/` + searchField)
 		.then(response => {
 			this.setState({ 
                 projects : response.data,
@@ -107,7 +107,7 @@ class User extends Component {
 
     getAllProjects(){
         console.log(this.state.limit)
-        axios.get(`http://localhost:8080/projects/` + this.state.limit)
+        axios.get(`http://localhost:8080/IERIA/projects/` + this.state.limit)
 		.then(response => {
 			this.setState({ projects : response.data });
       		this.setState({projectsLoaded: true});

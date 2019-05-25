@@ -58,7 +58,7 @@ class Login extends Component {
 
     submitForm() {
         const axios = require('axios');
-        axios.post("http://localhost:8080/login", {
+        axios.post("http://localhost:8080/IERIA/login", {
             "Access-Control-Allow-Origin" : "*",
         'Access-Control-Request-Headers': '*'}, {
             params:{
