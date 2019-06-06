@@ -23,7 +23,7 @@ class AddSkill extends Component {
     		if (sel.value === '1') {
     			return
     		}
-			axios.put(`http://172.20.255.100:8080/IERIA/skill/${this.props.userId}/${sel.value}`)
+			axios.put(`http://185.166.107.169:30085/IERIA/skill/${this.props.userId}/${sel.value}`)
 			.then(response => {
 				this.props.updateUserData(response.data)
 			})

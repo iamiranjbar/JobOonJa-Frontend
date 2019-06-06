@@ -33,7 +33,7 @@ class User extends Component {
     }
 
     fetchData(){
-		axios.get(`http://172.20.255.100:8080/IERIA/user/${this.state.id}`)
+		axios.get(`http://185.166.107.169:30085/IERIA/user/${this.state.id}`)
 		.then(response => {
 			// console.log(response)
 			this.setState({ user : response.data });
@@ -51,7 +51,7 @@ class User extends Component {
     }
 
     fetchSkills() {
-    	axios.get(`http://172.20.255.100:8080/IERIA/skill/${this.state.id}`)
+    	axios.get(`http://185.166.107.169:30085/IERIA/skill/${this.state.id}`)
 		.then(response => {
 			this.setState({ skills : response.data });
 		})

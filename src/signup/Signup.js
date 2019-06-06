@@ -94,7 +94,7 @@ class Signup extends Component {
                 validUsername: true
             })
         }
-        axios.get(`http://172.20.255.100:8080/IERIA/validate/${event.target.value}`)
+        axios.get(`http://185.166.107.169:30085/IERIA/validate/${event.target.value}`)
         .then(response => {
             console.log(response.data)
             if (response.data)
@@ -201,7 +201,7 @@ class Signup extends Component {
     submitForm(event) {
         event.preventDefault()
         console.log("*************<<<<<<<<<")
-        axios.post('http://172.20.255.100:8080/IERIA/signup', null,
+        axios.post('http://185.166.107.169:30085/IERIA/signup', null,
         {
             params: {
                 firstName: this.state.firstname,

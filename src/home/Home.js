@@ -64,7 +64,7 @@ class User extends Component {
     }
 
     handleUserSearch(){
-        axios.get(`http://172.20.255.100:8080/IERIA/user/search/` + this.state.userSearchText)
+        axios.get(`http://185.166.107.169:30085/IERIA/user/search/` + this.state.userSearchText)
 		.then(response => {
 			this.setState({ 
                 users : response.data,
@@ -78,7 +78,7 @@ class User extends Component {
     }
     
     getAllUsers(){
-        axios.get(`http://172.20.255.100:8080/IERIA/user`)
+        axios.get(`http://185.166.107.169:30085/IERIA/user`)
 		.then(response => {
 			this.setState({ 
                 users:response.data,
@@ -92,7 +92,7 @@ class User extends Component {
     }
 
     handleProjectSearch(searchField){
-        axios.get(`http://172.20.255.100:8080/IERIA/project/search/` + searchField)
+        axios.get(`http://185.166.107.169:30085/IERIA/project/search/` + searchField)
 		.then(response => {
 			this.setState({ 
                 projects : response.data,
@@ -107,7 +107,7 @@ class User extends Component {
 
     getAllProjects(){
         console.log(this.state.limit)
-        axios.get(`http://172.20.255.100:8080/IERIA/projects/` + this.state.limit)
+        axios.get(`http://185.166.107.169:30085/IERIA/projects/` + this.state.limit)
 		.then(response => {
 			this.setState({ projects : response.data });
       		this.setState({projectsLoaded: true});
