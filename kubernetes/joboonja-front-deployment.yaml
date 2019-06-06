@@ -2,7 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: joboonja-front-deployment
+  namespace: ali-edalat-ns
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
   replicas: 3
   selector:
     matchLabels:
