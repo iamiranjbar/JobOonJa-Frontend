@@ -6,4 +6,4 @@ We implemented a complete platform for projects outsourcing. The backend of this
 
 This repository contains the frontend side code. In this project, we learned to develop a frontend for our website. At first, we do it by html and css. Then we completed it by React framework.
 
-Different phases of project defines as tags.
+Different phases of project defines as tags. Final version of project is on the development branch.
